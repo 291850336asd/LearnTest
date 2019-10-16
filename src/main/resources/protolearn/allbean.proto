@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package com.meng.example.protobuf;
+
+option optimize_for = SPEED;
+
+option java_package = "com.meng.nettynio.nettyexample.protobuf";
+option java_outer_classname = "AllInfoProto";
+
+message AllBeanMapper {
+    enum DataType {
+        Empty = 0;
+        StudentType = 2;
+        DogType = 3;
+        CatType = 4;
+    }
+    DataType date_type = 1;
+
+    oneof dataBody{
+        Student student = 2;
+        Dog dog = 3;
+        Cat cat = 4;
+    }
+}
+
+message Student {
+    string name = 1;
+    int32 age = 2;
+    string address = 3;
+}
+
+message Dog {
+    string name = 1;
+}
+
+message Cat {
+    string name = 1;
+    string city = 2;
+}

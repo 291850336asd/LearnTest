@@ -1,0 +1,69 @@
+<component name="ArtifactManager">
+  <artifact name="netty:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/netty_jar</output-path>
+    <root id="root">
+      <element id="archive" name="netty.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="netty" />
+      </element>
+      <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.7.9" />
+      <element id="library" level="project" name="Maven: com.google.android:annotations:4.1.1.4" />
+      <element id="library" level="project" name="Maven: org.yaml:snakeyaml:1.15" />
+      <element id="library" level="project" name="Maven: io.netty:netty-codec-dns:4.1.22.Final" />
+      <element id="library" level="project" name="Maven: net.bytebuddy:byte-buddy:1.7.10" />
+      <element id="library" level="project" name="Maven: com.google.j2objc:j2objc-annotations:1.1" />
+      <element id="library" level="project" name="Maven: com.google.guava:guava:27.1-jre" />
+      <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.6.0" />
+      <element id="library" level="project" name="Maven: io.grpc:grpc-netty-shaded:1.21.0" />
+      <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.7" />
+      <element id="library" level="project" name="Maven: redis.clients:jedis:2.10.2" />
+      <element id="library" level="project" name="Maven: io.grpc:grpc-context:1.21.0" />
+      <element id="library" level="project" name="Maven: io.netty:netty-buffer:4.1.22.Final" />
+      <element id="library" level="project" name="Maven: org.reactivestreams:reactive-streams:1.0.1" />
+      <element id="library" level="project" name="Maven: org.jodd:jodd-core:3.7.1" />
+      <element id="library" level="project" name="Maven: org.codehaus.mojo:animal-sniffer-annotations:1.17" />
+      <element id="library" level="project" name="Maven: io.jsonwebtoken:jjwt-api:0.10.7" />
+      <element id="library" level="project" name="Maven: io.projectreactor:reactor-core:3.1.1.RELEASE" />
+      <element id="library" level="project" name="Maven: com.github.brainlag:nsq-client:1.0.0.RC4" />
+      <element id="library" level="project" name="Maven: org.jodd:jodd-bean:3.7.1" />
+      <element id="library" level="project" name="Maven: com.google.errorprone:error_prone_annotations:2.3.2" />
+      <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.16.16" />
+      <element id="library" level="project" name="Maven: io.jsonwebtoken:jjwt-jackson:0.10.7" />
+      <element id="library" level="project" name="Maven: io.grpc:grpc-api:1.21.0" />
+      <element id="library" level="project" name="Maven: io.netty:netty-common:4.1.22.Final" />
+      <element id="library" level="project" name="Maven: io.netty:netty-transport:4.1.22.Final" />
+      <element id="library" level="project" name="Maven: com.google.code.findbugs:jsr305:3.0.2" />
+      <element id="library" level="project" name="Maven: org.apache.commons:commons-pool2:2.4.2" />
+      <element id="library" level="project" name="Maven: org.redisson:redisson:3.6.5" />
+      <element id="library" level="project" name="Maven: io.opencensus:opencensus-contrib-grpc-metrics:0.21.0" />
+      <element id="library" level="project" name="Maven: io.netty:netty-resolver:4.1.22.Final" />
+      <element id="library" level="project" name="Maven: com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.7.9" />
+      <element id="library" level="project" name="Maven: io.grpc:grpc-core:1.21.0" />
+      <element id="library" level="project" name="Maven: org.checkerframework:checker-qual:2.5.2" />
+      <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java-util:3.8.0" />
+      <element id="library" level="project" name="Maven: io.grpc:grpc-protobuf-lite:1.21.0" />
+      <element id="library" level="project" name="Maven: io.grpc:grpc-protobuf:1.21.0" />
+      <element id="library" level="project" name="Maven: io.netty:netty-all:4.1.15.Final" />
+      <element id="library" level="project" name="Maven: io.netty:netty-resolver-dns:4.1.22.Final" />
+      <element id="library" level="project" name="Maven: io.grpc:grpc-stub:1.21.0" />
+      <element id="library" level="project" name="Maven: joda-time:joda-time:2.10.3" />
+      <element id="library" level="project" name="Maven: io.jsonwebtoken:jjwt-impl:0.10.7" />
+      <element id="library" level="project" name="Maven: com.google.guava:failureaccess:1.0.1" />
+      <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.22" />
+      <element id="library" level="project" name="Maven: javax.cache:cache-api:1.0.0" />
+      <element id="library" level="project" name="Maven: com.google.api.grpc:proto-google-common-protos:1.12.0" />
+      <element id="library" level="project" name="Maven: io.netty:netty-handler:4.1.22.Final" />
+      <element id="library" level="project" name="Maven: com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava" />
+      <element id="library" level="project" name="Maven: io.opencensus:opencensus-api:0.21.0" />
+      <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.5" />
+      <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.5" />
+      <element id="library" level="project" name="Maven: org.javassist:javassist:3.20.0-GA" />
+      <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.6.4" />
+      <element id="library" level="application" name="Bundled Protobuf Distribution" />
+      <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.8.0" />
+      <element id="library" level="project" name="Maven: io.netty:netty-codec:4.1.22.Final" />
+    </root>
+  </artifact>
+</component>

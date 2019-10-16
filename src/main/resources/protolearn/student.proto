@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package com.meng.example.protobuf;
+
+option optimize_for = SPEED;
+
+option java_package = "com.meng.nettynio.nettyexample.protobuf";
+option java_outer_classname = "DataInfoProto";
+
+message Student {
+    string name = 1;
+    int32 age = 2;
+    string address = 3;
+}

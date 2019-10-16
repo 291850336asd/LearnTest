@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Class-Path: jackson-core-2.7.9.jar annotations-4.1.1.4.jar snakeyaml-1
+ .15.jar netty-codec-dns-4.1.22.Final.jar byte-buddy-1.7.10.jar j2objc
+ -annotations-1.1.jar guava-27.1-jre.jar jackson-annotations-2.6.0.jar
+  grpc-netty-shaded-1.21.0.jar gson-2.7.jar jedis-2.10.2.jar grpc-cont
+ ext-1.21.0.jar netty-buffer-4.1.22.Final.jar reactive-streams-1.0.1.j
+ ar jodd-core-3.7.1.jar animal-sniffer-annotations-1.17.jar jjwt-api-0
+ .10.7.jar reactor-core-3.1.1.RELEASE.jar nsq-client-1.0.0.RC4.jar jod
+ d-bean-3.7.1.jar error_prone_annotations-2.3.2.jar lombok-1.16.16.jar
+  jjwt-jackson-0.10.7.jar grpc-api-1.21.0.jar netty-common-4.1.22.Fina
+ l.jar netty-transport-4.1.22.Final.jar jsr305-3.0.2.jar commons-pool2
+ -2.4.2.jar redisson-3.6.5.jar opencensus-contrib-grpc-metrics-0.21.0.
+ jar netty-resolver-4.1.22.Final.jar jackson-dataformat-yaml-2.7.9.jar
+  grpc-core-1.21.0.jar checker-qual-2.5.2.jar protobuf-java-util-3.8.0
+ .jar grpc-protobuf-lite-1.21.0.jar grpc-protobuf-1.21.0.jar netty-all
+ -4.1.15.Final.jar netty-resolver-dns-4.1.22.Final.jar grpc-stub-1.21.
+ 0.jar joda-time-2.10.3.jar jjwt-impl-0.10.7.jar failureaccess-1.0.1.j
+ ar slf4j-api-1.7.22.jar cache-api-1.0.0.jar proto-google-common-proto
+ s-1.12.0.jar netty-handler-4.1.22.Final.jar listenablefuture-9999.0-e
+ mpty-to-avoid-conflict-with-guava.jar opencensus-api-0.21.0.jar log4j
+ -api-2.5.jar log4j-core-2.5.jar javassist-3.20.0-GA.jar jackson-datab
+ ind-2.6.4.jar protobuf-java-3.8.0.jar netty-codec-4.1.22.Final.jar
+Premain-Class: com.meng.apm.service.monitor.AgentMain
+
