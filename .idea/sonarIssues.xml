@@ -1343,6 +1343,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/.gitignore">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/mapper.txt">
           <value>
             <set />
@@ -2599,6 +2604,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../vc-sync-bi/task/src/main/java/cmc/vc/sync/bi/task/VoucherSellLogTask.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="E:/workspace/cmc-member-management/cmc-member-task/src/main/java/cmc/member/job/CmcMemberJob.java">
           <value>
             <set />
           </value>

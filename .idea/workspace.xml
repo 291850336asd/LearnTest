@@ -9,7 +9,11 @@
     <bookmark url="jar://E:/softwareinstall/jdk/src.zip!/java/util/stream/Stream.java" description="public interface Stream&lt;T&gt; extends BaseStream&lt;T, S..." line="153" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2a833d7-6277-429c-a7fe-6ce48ad99952" name="Default Changelist" comment="" />
+    <list default="true" id="c2a833d7-6277-429c-a7fe-6ce48ad99952" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarIssues.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarIssues.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,40 +28,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="211" column="43" lean-forward="true" selection-start-line="211" selection-start-column="43" selection-end-line="211" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/test/test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/test/service/SpringServiceCollectTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/test/cinema/Test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="22" column="37" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="37" />
+            <state relative-caret-position="184">
+              <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -106,12 +80,11 @@
   <component name="Git.Settings">
     <option name="PATH_TO_GIT" value="E:\softwareinstall\Git\bin\git.exe" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/meng/jdk8/stream/Test13.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/meng/jdk8/streamtheory/Test1Student.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/meng/jdk8/streamtheory/Test2Comparator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/meng/jdk8/streamtheory/customcollector/MySetCollector.java" />
@@ -162,6 +135,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/meng/apm/service/monitor/collects/JdbcCommonCollects.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/meng/apm/service/monitor/AgentMain.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -185,10 +159,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1912" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -198,7 +172,35 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="netty" type="b2602c69:ProjectViewProjectNode" />
+              <item name="netty" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="netty" type="b2602c69:ProjectViewProjectNode" />
+              <item name="netty" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="netty" type="b2602c69:ProjectViewProjectNode" />
+              <item name="netty" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="netty" type="b2602c69:ProjectViewProjectNode" />
+              <item name="netty" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
@@ -224,18 +226,19 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.meng.nettymillon" />
-      <recent name="com.meng.nettycodec.simple_long" />
-      <recent name="com.meng.example.thridMutiClientSocket" />
-      <recent name="com.meng.example.second" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\workspace\netty\src\main\java\com\meng\jdk8\stream" />
+      <recent name="E:\workspace\netty\src\main\java\com\meng\redis\redissonlock" />
+      <recent name="E:\workspace\netty\src\main\java\com\meng\reactornio" />
+      <recent name="E:\workspace\netty\src\main\java\com\meng\reactor" />
+      <recent name="E:\workspace\netty\src\main\resources" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\test\project\netty" />
       <recent name="E:\workspace\netty\src\main\java\com\meng\apm\service\monitor\collects" />
       <recent name="E:\workspace\netty\src\test\java\com\test\service" />
       <recent name="E:\workspace\netty\src\main\java\com\meng\apm\service" />
       <recent name="E:\workspace\netty\src\main\java\com\meng\apm\service\monitor" />
-      <recent name="E:\workspace\netty\src\main\java\com\meng\apm\service\monitor\common" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.meng.jdk8.streamtheory" />
@@ -244,12 +247,11 @@
       <recent name="com.meng.jdk8.integerdefaultmethod" />
       <recent name="com.meng.jdk8.methodreference" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\workspace\netty\src\main\java\com\meng\jdk8\stream" />
-      <recent name="E:\workspace\netty\src\main\java\com\meng\redis\redissonlock" />
-      <recent name="E:\workspace\netty\src\main\java\com\meng\reactornio" />
-      <recent name="E:\workspace\netty\src\main\java\com\meng\reactor" />
-      <recent name="E:\workspace\netty\src\main\resources" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.meng.nettymillon" />
+      <recent name="com.meng.nettycodec.simple_long" />
+      <recent name="com.meng.example.thridMutiClientSocket" />
+      <recent name="com.meng.example.second" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -421,7 +423,7 @@
       <workItem from="1569572859144" duration="5606000" />
       <workItem from="1571066012349" duration="15157000" />
       <workItem from="1571149266172" duration="4529000" />
-      <workItem from="1571205506435" duration="170000" />
+      <workItem from="1571205506435" duration="2004000" />
     </task>
     <servers />
   </component>
@@ -455,7 +457,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="722997000" />
+    <option name="totallyTimeSpent" value="724831000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -467,7 +469,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" order="0" />
@@ -475,7 +477,7 @@
       <window_info id="Capture Tool" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="5" sideWeight="0.4980916" visible="true" weight="0.15236051" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" sideWeight="0.4980916" visible="true" weight="0.29014844" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4979757" weight="0.5660161" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8225371" weight="0.04226919" />
@@ -483,7 +485,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.62369794" weight="0.46559298" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.6956815" visible="true" weight="0.27210104" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.6956815" visible="true" weight="0.13871951" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.3763021" side_tool="true" weight="0.5856515" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.71834767" weight="0.3053961" />
@@ -492,7 +494,7 @@
       <window_info anchor="bottom" id="SonarQube" order="13" />
       <window_info anchor="bottom" id="Tail" order="14" />
       <window_info anchor="bottom" id="Spring" order="15" weight="0.3292683" />
-      <window_info anchor="right" id="Maven" order="0" visible="true" weight="0.0751073" />
+      <window_info anchor="right" id="Maven" order="0" visible="true" weight="0.09446694" />
       <window_info anchor="right" id="Palette" order="1" />
       <window_info anchor="right" id="Capture Analysis" order="2" />
       <window_info anchor="right" id="Database" order="3" />
@@ -558,20 +560,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.m2/repository/net/bytebuddy/byte-buddy/1.7.10/byte-buddy-1.7.10.jar!/net/bytebuddy/dynamic/loading/ClassReloadingStrategy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="391" column="26" selection-start-line="391" selection-start-column="26" selection-end-line="391" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/softwareinstall/jdk/src.zip!/java/lang/instrument/ClassFileTransformer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="181" column="4" selection-start-line="181" selection-start-column="4" selection-end-line="181" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.m2/repository/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar!/javax/servlet/http/HttpServlet.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -779,24 +767,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/meng/apm/servlet/AgentMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="17" column="47" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="47" />
-          <folding>
-            <element signature="e#582#583#0" expanded="true" />
-            <element signature="e#625#626#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/meng/apm/servlet/DispatcherServletCollecct.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="61" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/meng/jdk8/stream/Test8.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="28">
@@ -939,6 +909,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="22" column="37" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meng/jwt/JWTTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meng/apm/servlet/AgentMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="17" column="47" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="47" />
+          <folding>
+            <element signature="e#582#583#0" expanded="true" />
+            <element signature="e#625#626#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meng/apm/servlet/DispatcherServletCollecct.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="61" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
         </state>
       </provider>
     </entry>
