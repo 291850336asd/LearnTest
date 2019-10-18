@@ -129,7 +129,7 @@ public class SnowFlake {
         SnowFlake snowFlake = new SnowFlake(2, 3);
 
         long start = System.currentTimeMillis();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 50000; i++) {
             System.out.println(snowFlake.nextId());
         }
 
