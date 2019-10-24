@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		<!-- 真实的服务提供者，目标tagert -->
+		<bean id="usersService" class="com.meng.spring.test.UserServiceImp"></bean>
+	    <bean id="usersDao" class="com.meng.spring.test.UserDaoImp"></bean>
+<!--		&lt;!&ndash; 增强代码也使用配置 &ndash;&gt;-->
+<!--		<bean id="myAspect" class="com.tl.aspect.MyAspect"></bean>-->
+<!--		-->
+<!--		&lt;!&ndash; AOP配置 &ndash;&gt;-->
+<!--		<aop:config>-->
+<!--			&lt;!&ndash; 切点 &ndash;&gt;-->
+<!--			<aop:pointcut expression="execution(* com.tl.service.impl.*.*(..))" id="p1"/>-->
+<!--			&lt;!&ndash; 在切点上织入通知 &ndash;&gt;-->
+<!--			<aop:aspect ref="myAspect">-->
+<!--				&lt;!&ndash; 前置通知 -->
+<!--					method:对应使用哪个增强方法-->
+<!--				&ndash;&gt;-->
+<!--				<aop:before method="before" pointcut-ref="p1"/>-->
+<!--			</aop:aspect>-->
+<!--		</aop:config>-->
+</beans>
