@@ -31,7 +31,6 @@ public class Test {
         userService.setName("haha");
 
         Advised advised = (Advised) userService;
-
         CountingBeforeAdvice count = new CountingBeforeAdvice();
         advised.addAdvice(count);
         userService.getName();
