@@ -1,7 +1,9 @@
 package com.test;
 
 import com.meng.mybatis.Person;
+import org.apache.ibatis.builder.xml.XMLMapperBuilder;
 import org.apache.ibatis.jdbc.SQL;
+import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -30,6 +32,18 @@ public class PersonTest {
             System.out.println(person);
         }
     }
+
+    @Test
+    public void parseConfiguration() {
+        Configuration config = new Configuration();
+        InputStream inputStream = getClass().getResourceAsStream("/person.xml");
+        XMLMapperBuilder builder = new XMLMapperBuilder(inputStream, config, "/person.xml",
+                config.getSqlFragments());
+        builder.parse();
+        config.getMappedStatement("com.meng.mybatis.Person.selectPerson");
+
+    }
+
 
     @Test
     public void test1() {
