@@ -12,3 +12,4 @@ javasssist
 javaagent
 springioc
 springaop
+mybatis
