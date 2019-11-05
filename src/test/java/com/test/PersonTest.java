@@ -1,6 +1,7 @@
 package com.test;
 
 import com.meng.mybatis.Person;
+import com.meng.mybatis.PersonMapper;
 import org.apache.ibatis.builder.xml.XMLMapperBuilder;
 import org.apache.ibatis.jdbc.SQL;
 import org.apache.ibatis.session.Configuration;
@@ -10,8 +11,6 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
 import java.io.InputStream;
-
-import static org.apache.ibatis.jdbc.SqlBuilder.SELECT;
 
 public class PersonTest {
 
@@ -28,19 +27,39 @@ public class PersonTest {
                 new SqlSessionFactoryBuilder().build(inputStream);
         try (SqlSession session = sqlSessionFactory.openSession()) {
             Person person = session.selectOne(
-                    "com.meng.mybatis.Person.selectPerson", 1);
+                    "com.meng.mybatis.PersonMapper.selectPerson", 1);
             System.out.println(person);
         }
     }
 
     @Test
+    public void testPersonMapper(){
+        String resource = "/mybatis-config.xml";
+        InputStream inputStream = null;
+        try {
+            inputStream = getClass().getResourceAsStream(resource);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        SqlSessionFactory sqlSessionFactory =
+                new SqlSessionFactoryBuilder().build(inputStream);
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            PersonMapper personMapper = session.getMapper(PersonMapper.class);
+            Person person = personMapper.selectPerson(1);
+            System.out.println(person);
+        }
+    }
+
+
+
+    @Test
     public void parseConfiguration() {
         Configuration config = new Configuration();
-        InputStream inputStream = getClass().getResourceAsStream("/person.xml");
-        XMLMapperBuilder builder = new XMLMapperBuilder(inputStream, config, "/person.xml",
+        InputStream inputStream = getClass().getResourceAsStream("/PersonMapper.xml");
+        XMLMapperBuilder builder = new XMLMapperBuilder(inputStream, config, "/PersonMapper.xml",
                 config.getSqlFragments());
         builder.parse();
-        config.getMappedStatement("com.meng.mybatis.Person.selectPerson");
+        config.getMappedStatement("com.meng.mybatis.PersonMapper.selectPerson");
 
     }
 

@@ -13,12 +13,12 @@
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
                 <property name="url" value="jdbc:mysql://192.168.55.124:3306/test"/>
-                <property name="username" value="xxx"/>
+                <property name="username" value="xxxx"/>
                 <property name="password" value="xxxx"/>
             </dataSource>
         </environment>
     </environments>
     <mappers>
-        <mapper resource="./person.xml"/>
+        <mapper resource="./PersonMapper.xml"/>
     </mappers>
 </configuration>
