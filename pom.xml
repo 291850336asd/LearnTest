@@ -4,10 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.meng.example.first</groupId>
+    <groupId>com.meng.example</groupId>
     <artifactId>netty</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <modules>
+        <module>logging</module>
+    </modules>
+    <packaging>pom</packaging>
     <build>
         <extensions>
             <extension>
@@ -219,7 +222,6 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.30</version>
         </dependency>
-
     </dependencies>
 
 <!--    <repositories>-->
