@@ -14,3 +14,4 @@ springioc 体系结构
 springaop 体系结构
 mybatis 体系结构
 logging 体系结构
+nginx基本使用
