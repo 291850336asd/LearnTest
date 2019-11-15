@@ -15,3 +15,5 @@ springaop 体系结构
 mybatis 体系结构
 logging 体系结构
 nginx基本使用
+tomcat 自动发布脚本  
+项目持续集成发布管理
