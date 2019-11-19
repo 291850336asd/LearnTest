@@ -40,6 +40,7 @@ public class Test {
 		// 常量，不会对类的初始化产生任何影响
 		
 	//	Class<?> clazz = Class.forName("com.tl.jvm.demo3.ParentClass");// ParentClass init...
-		
+
+//		System.out.println(ParentClass.ageFinal);//静态常量 也不会初始化类
 	}
 }
