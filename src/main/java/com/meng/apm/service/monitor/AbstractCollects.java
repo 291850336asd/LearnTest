@@ -1,7 +1,6 @@
 package com.meng.apm.service.monitor;
 
 
-import com.google.gson.JsonObject;
 import com.meng.apm.service.monitor.collects.ErrorLog;
 import com.meng.apm.service.monitor.common.NetUtils;
 import com.meng.apm.service.monitor.json.JsonWriter;
@@ -9,9 +8,6 @@ import com.meng.apm.service.monitor.json.JsonWriter;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigInteger;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.util.HashMap;
 import java.util.Map;
