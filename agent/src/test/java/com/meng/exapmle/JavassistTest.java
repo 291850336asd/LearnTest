@@ -9,9 +9,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
-/**
- * Created by Tommy on 2018/3/6.
- */
 public class JavassistTest {
 
     @Test
