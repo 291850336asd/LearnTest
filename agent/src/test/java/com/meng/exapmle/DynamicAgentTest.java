@@ -8,7 +8,7 @@ import com.sun.tools.attach.VirtualMachine;
 import java.lang.management.ManagementFactory;
 
 
-public class MyAgentTest {
+public class DynamicAgentTest {
 
     @Ignore
     @Test
@@ -26,7 +26,7 @@ public class MyAgentTest {
     @Ignore
     @Test
     public void agentAttach() throws Exception {
-        String targetPid = "22940";
+        String targetPid = "30344";
         VirtualMachine vm = VirtualMachine.attach(targetPid);
         vm.loadAgent(System.getProperty("user.dir") + "/target/agent-1.0-SNAPSHOT.jar",
                 "toagent");
