@@ -13,7 +13,7 @@ import java.nio.file.Files;
  * Created by Tommy on 2018/3/6.
  */
 public class JavassistTest {
-    @Ignore
+
     @Test
     public void updateMethod() throws NotFoundException, CannotCompileException, IOException {
         ClassPool pool = new ClassPool();
@@ -30,12 +30,11 @@ public class JavassistTest {
         File file = new File(System.getProperty("user.dir") + "/target/UserServiceImpl.class");
         file.createNewFile();
         Files.write(file.toPath(), ctl.toBytecode());
-       UserServiceImpl userService =  new UserServiceImpl();
-       userService.addUser("meng1", "man");
-       userService.getUser();
+        UserServiceImpl userService =  new UserServiceImpl();
+        userService.addUser("meng1", "man");
+        userService.getUser();
     }
 
-    @Ignore
     @Test
     public void update() throws NotFoundException, CannotCompileException, IOException {
         ClassPool pool = new ClassPool();

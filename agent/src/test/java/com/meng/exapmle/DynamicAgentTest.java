@@ -10,7 +10,7 @@ import java.lang.management.ManagementFactory;
 
 public class DynamicAgentTest {
 
-    @Ignore
+
     @Test
     public void premainTest() {
 
@@ -23,7 +23,6 @@ public class DynamicAgentTest {
         }
     }
 
-    @Ignore
     @Test
     public void agentAttach() throws Exception {
         String targetPid = "30344";
