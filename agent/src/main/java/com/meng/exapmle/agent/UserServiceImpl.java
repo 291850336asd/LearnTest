@@ -1,7 +1,7 @@
 package com.meng.exapmle.agent;
 
 
-public class UserServiceImpl {
+public class UserServiceImpl implements UserService{
 
     public void getUser() {
         System.out.println("raw getUser method");
