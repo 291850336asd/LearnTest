@@ -4,6 +4,7 @@ import com.meng.exapmle.agent.UserService;
 import com.meng.exapmle.agent.UserServiceImpl;
 import javassist.*;
 import org.apache.commons.io.IOUtils;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
@@ -15,6 +16,7 @@ import java.nio.file.Files;
 
 public class JavassistTest {
 
+    @Ignore
     @Test
     public void updateMethod() throws NotFoundException, CannotCompileException, IOException {
         ClassPool pool = new ClassPool();
@@ -90,6 +92,7 @@ public class JavassistTest {
         }
     }
 
+    @Ignore
     @Test
     public void update() throws NotFoundException, CannotCompileException, IOException {
         ClassPool pool = new ClassPool();
