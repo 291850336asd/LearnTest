@@ -12,6 +12,24 @@
     <artifactId>agent</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>com.meng</groupId>
+            <artifactId>jconsole</artifactId>
+            <version>1.8.0</version>
+            <scope>system</scope>
+            <systemPath>${java.home}/../lib/jconsole.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.meng</groupId>
+            <artifactId>tools</artifactId>
+            <version>1.8.0</version>
+            <scope>system</scope>
+            <systemPath>${java.home}/../lib/tools.jar</systemPath>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -24,8 +42,8 @@
                             <Project-name>${project.name}</Project-name>
                             <Project-version>${project.version}</Project-version>
                             <Boot-Class-Path>javassist-3.18.1-GA.jar</Boot-Class-Path>
-                            <Premain-Class>com.meng.exapmle.agent.HelloAgent</Premain-Class>
-                            <Agent-Class>com.meng.exapmle.agent.HelloAgent</Agent-Class>
+                            <Premain-Class>com.meng.exapmle.agent.example.HelloAgent</Premain-Class>
+                            <Agent-Class>com.meng.exapmle.agent.dynamic.MyAgent</Agent-Class>
                             <Can-Redefine-Classes>true</Can-Redefine-Classes>
                         </manifestEntries>
                     </archive>
