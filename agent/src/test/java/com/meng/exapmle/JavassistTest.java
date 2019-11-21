@@ -55,14 +55,15 @@ public class JavassistTest {
         //  所以，在替换Class的时候，  加载该Class的ClassLoader也必须用新的。 
         //使用新的ClassLoader
         try {
-            file = new File(System.getProperty("user.dir") + "/target/UserServiceImpl.class");
-            if(file.exists()){
-                file.delete();
-            }
-            file.createNewFile();
-            Files.write(file.toPath(), ctl.toBytecode());
             NewClassLoader localClassLoader = new NewClassLoader();
-            localClassLoader.setCodeByte(IOUtils.toByteArray(new FileInputStream(file)));
+//            file = new File(System.getProperty("user.dir") + "/target/UserServiceImpl.class");
+//            if(file.exists()){
+//                file.delete();
+//            }
+//            file.createNewFile();
+//            Files.write(file.toPath(), ctl.toBytecode());
+//            localClassLoader.setCodeByte(IOUtils.toByteArray(new FileInputStream(file)));
+            localClassLoader.setCodeByte(ctl.toBytecode());
             Class serviceClass = localClassLoader.findClass(ctl.getName());
             //此处必须使用接口否则转化失败是因为classloader不用
             //java.lang.ClassCastException: com.meng.exapmle.agent.UserServiceImpl cannot be cast to com.meng.exapmle.agent.UserServiceImpl
