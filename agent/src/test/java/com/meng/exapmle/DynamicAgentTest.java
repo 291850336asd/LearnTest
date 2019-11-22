@@ -28,7 +28,7 @@ public class DynamicAgentTest {
     public void agentAttach() throws Exception {
         String targetPid = "30344";
         VirtualMachine vm = VirtualMachine.attach(targetPid);
-        vm.loadAgent(System.getProperty("user.dir") + "/target/agent-1.0-SNAPSHOT.jar",
+        vm.loadAgent(System.getProperty("user.dir") + "/target/agentsimple-1.0-SNAPSHOT.jar",
                 "toagent");
     }
 }

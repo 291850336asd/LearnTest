@@ -1,14 +1,12 @@
 package com.meng.exapmle;
 
-import com.meng.exapmle.agent.UserService;
-import com.meng.exapmle.agent.UserServiceImpl;
+import com.meng.exapmle.agentsimple.UserService;
+import com.meng.exapmle.agentsimple.UserServiceImpl;
 import javassist.*;
-import org.apache.commons.io.IOUtils;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -21,7 +19,7 @@ public class JavassistTest {
     public void updateMethod() throws NotFoundException, CannotCompileException, IOException {
         ClassPool pool = new ClassPool();
         pool.appendSystemPath();
-        CtClass ctl = pool.get("com.meng.exapmle.agent.UserServiceImpl");
+        CtClass ctl = pool.get("com.meng.exapmle.agentsimple.UserServiceImpl");
         CtField f = new CtField(pool.get(String.class.getName()), "abc", ctl);
         ctl.addField(f);
         CtMethod mehod = ctl.getDeclaredMethod("getUser");
@@ -33,7 +31,7 @@ public class JavassistTest {
         File file = new File(System.getProperty("user.dir") + "/target/UserServiceImpl.class");
         file.createNewFile();
         Files.write(file.toPath(), ctl.toBytecode());
-        com.meng.exapmle.agent.UserServiceImpl userService =  new com.meng.exapmle.agent.UserServiceImpl();
+        com.meng.exapmle.agentsimple.UserServiceImpl userService =  new com.meng.exapmle.agentsimple.UserServiceImpl();
         userService.addUser("meng1", "man");
         userService.getUser();
 
@@ -53,7 +51,7 @@ public class JavassistTest {
         System.out.println("---------");
 
         //同一个ClassLoader不能多次加载同一个类。 如果重复的加载同一个类 ，
-        // 将会抛出  attempted  duplicate class definition for name: "com/meng/exapmle/agent/UserServiceImpl 异常。
+        // 将会抛出  attempted  duplicate class definition for name: "com/meng/exapmle/agentsimple/UserServiceImpl 异常。
         //  所以，在替换Class的时候，  加载该Class的ClassLoader也必须用新的。 
         //使用新的ClassLoader
         try {
@@ -68,7 +66,7 @@ public class JavassistTest {
             localClassLoader.setCodeByte(ctl.toBytecode());
             Class serviceClass = localClassLoader.findClass(ctl.getName());
             //此处必须使用接口否则转化失败是因为classloader不用
-            //java.lang.ClassCastException: com.meng.exapmle.agent.UserServiceImpl cannot be cast to com.meng.exapmle.agent.UserServiceImpl
+            //java.lang.ClassCastException: com.meng.exapmle.agentsimple.UserServiceImpl cannot be cast to com.meng.exapmle.agentsimple.UserServiceImpl
             UserService userService1 = (UserService) serviceClass.newInstance();
             userService1.addUser("haha", "oo");
             userService1.getUser();
@@ -97,7 +95,7 @@ public class JavassistTest {
     public void update() throws NotFoundException, CannotCompileException, IOException {
         ClassPool pool = new ClassPool();
         pool.appendSystemPath();
-        CtClass ctl = pool.get("com.meng.exapmle.agent.UserServiceImpl");
+        CtClass ctl = pool.get("com.meng.exapmle.agentsimple.UserServiceImpl");
         CtMethod mehod = ctl.getDeclaredMethod("addUser");
         mehod.insertBefore("System.out.println($0);");
         mehod.insertBefore("System.out.println($1);");

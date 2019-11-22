@@ -1,8 +1,7 @@
-package com.meng.exapmle.agent.example;
+package com.meng.exapmle.agentsimple.example;
 
 import javassist.*;
 
-import java.io.File;
 import java.io.IOException;
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
@@ -31,7 +30,7 @@ public class HelloAgent {
         System.out.println(agentArgs);
 
         //给UserServiceImpl 的getUser方法注入 打印时间戳的log
-        String cName = "com.meng.exapmle.agent.UserServiceImpl";
+        String cName = "com.meng.exapmle.agentsimple.UserServiceImpl";
 
         //转化原始字节码文件
         instrumentation.addTransformer(new ClassFileTransformer() {

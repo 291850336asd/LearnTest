@@ -7,7 +7,7 @@ import java.lang.instrument.Instrumentation;
  * jdk1.5以后引入了javaAgent技术，javaAgent是运行方法之前的拦截器。
  * 我们利用javaAgent和ASM字节码技术，在JVM加载class二进制文件的时候，利用ASM动态的修改加载的class文件
  *
- * 如果你把 -javaagent 放在 -jar 后面，则不会生效。也就是说，放在主程序后面的 agent 是无效的。
+ * 如果你把 -javaagent 放在 -jar 后面，则不会生效。也就是说，放在主程序后面的 agentsimple 是无效的。
  *
  *
  * 测试

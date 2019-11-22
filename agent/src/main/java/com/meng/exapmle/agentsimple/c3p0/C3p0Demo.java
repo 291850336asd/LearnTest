@@ -1,4 +1,4 @@
-package com.meng.exapmle.agent.c3p0;
+package com.meng.exapmle.agentsimple.c3p0;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 

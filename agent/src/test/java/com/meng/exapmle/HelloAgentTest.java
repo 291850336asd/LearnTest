@@ -1,6 +1,6 @@
 package com.meng.exapmle;
 
-import com.meng.exapmle.agent.UserServiceImpl;
+import com.meng.exapmle.agentsimple.UserServiceImpl;
 import org.junit.Test;
 
 public class HelloAgentTest {

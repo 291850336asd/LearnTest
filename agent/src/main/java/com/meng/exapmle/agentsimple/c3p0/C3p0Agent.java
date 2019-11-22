@@ -1,4 +1,4 @@
-package com.meng.exapmle.agent.c3p0;
+package com.meng.exapmle.agentsimple.c3p0;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import com.sun.net.httpserver.Headers;
@@ -50,7 +50,7 @@ public class C3p0Agent implements ClassFileTransformer {
     }
 
     public String getStatus() {
-        Object source2 = System.getProperties().get("c3p0Source$agent");
+        Object source2 = System.getProperties().get("c3p0Source$agentsimple");
         if (source2 == null) {
             return "未初始任何c3p0数据源";
         }
@@ -67,7 +67,7 @@ public class C3p0Agent implements ClassFileTransformer {
             try {
                 CtClass ctl = pool.get(targetClass);
                 ctl.getConstructor("()V")
-                        .insertAfter("System.getProperties().put(\"c3p0Source$agent\", $0);");
+                        .insertAfter("System.getProperties().put(\"c3p0Source$agentsimple\", $0);");
                 result = ctl.toBytecode();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -82,10 +82,10 @@ public class C3p0Agent implements ClassFileTransformer {
         pool.insertClassPath(new LoaderClassPath(C3p0Agent.class.getClassLoader()));
         CtClass ctl = pool.get(targetClass);
         ctl.getConstructor("()V")
-                .insertAfter("System.getProperties().put(\"c3p0Source$agent\", $0);");
+                .insertAfter("System.getProperties().put(\"c3p0Source$agentsimple\", $0);");
         ctl.toClass();
         ComboPooledDataSource source = new ComboPooledDataSource("mysql");
-        Object source2 = System.getProperties().get("c3p0Source$agent");
+        Object source2 = System.getProperties().get("c3p0Source$agentsimple");
         System.out.println(source.toString());
         Assert.assertEquals(source, source2);
     }

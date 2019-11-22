@@ -1,6 +1,6 @@
-package com.meng.exapmle.agent.dynamic;
+package com.meng.exapmle.agentsimple.dynamic;
 
-import com.meng.exapmle.agent.c3p0.C3p0Agent;
+import com.meng.exapmle.agentsimple.c3p0.C3p0Agent;
 
 import java.lang.instrument.Instrumentation;
 
@@ -16,7 +16,7 @@ public class MyAgent {
     }
 
     /**
-     * agent 静态入口
+     * agentsimple 静态入口
      *
      * @param args
      * @param inst

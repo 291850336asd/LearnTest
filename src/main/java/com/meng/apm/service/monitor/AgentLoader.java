@@ -5,7 +5,7 @@ import javassist.*;
 import java.io.IOException;
 
 /**
- * agent 装载器 主要作用 1:构建代理监听环境 2:为目标类载入代理监听
+ * agentsimple 装载器 主要作用 1:构建代理监听环境 2:为目标类载入代理监听
  */
 public class AgentLoader {
     private final String className;
@@ -29,7 +29,7 @@ public class AgentLoader {
 
         // 基于原方法复制生成代理方法
         CtMethod agentMethod = CtNewMethod.copy(ctmethod, methodName, ctclass, null);
-        agentMethod.setName(methodName + "$agent");
+        agentMethod.setName(methodName + "$agentsimple");
         ctclass.addMethod(agentMethod);
 
         // 原方法重置为代理执行
@@ -92,7 +92,7 @@ public class AgentLoader {
                 + requestValue
                 + "        Object result=null;\n"
                 + "       try {\n"
-                + "            result=($w)%s$agent($$);\n"
+                + "            result=($w)%s$agentsimple($$);\n"
                 + "        } catch (Throwable e) {\n"
                 + "%s"
                 + "            throw e;\n"
@@ -106,7 +106,7 @@ public class AgentLoader {
                 + "%s"
                 + requestValue
                 + "        try {\n"
-                + "            %s$agent($$);\n"
+                + "            %s$agentsimple($$);\n"
                 + "        } catch (Throwable e) {\n"
                 + "%s"
                 + "            throw e;\n"

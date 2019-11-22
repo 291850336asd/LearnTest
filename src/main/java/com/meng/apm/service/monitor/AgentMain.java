@@ -99,12 +99,12 @@ public class AgentMain implements ClassFileTransformer {
                 if (c.isTarget(className, loader, cclass)) { // 仅限定只能转换一次.
                     //得到转换后的字节码
                     byte[] bytes = c.transform(loader, className, classfileBuffer, cclass);
-                    System.out.println(String.format("%s bit APM agent insert success", className));
+                    System.out.println(String.format("%s bit APM agentsimple insert success", className));
                     return bytes;
                 }
             }
         } catch (Throwable e) {
-            new Exception(String.format("%s bit APM agent insert fail", className), e).printStackTrace();
+            new Exception(String.format("%s bit APM agentsimple insert fail", className), e).printStackTrace();
         }
         return new byte[0];
     }

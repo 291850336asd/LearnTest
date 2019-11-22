@@ -1,4 +1,4 @@
-package com.meng.exapmle.agent;
+package com.meng.exapmle.agentsimple;
 
 public interface UserService {
     public void getUser();

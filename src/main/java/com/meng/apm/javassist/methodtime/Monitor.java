@@ -9,12 +9,12 @@ public class Monitor {
         try {
             CtClass targetClass = pool.get("com.meng.apm.javassist.methodtime.BitStringUtil");
             CtMethod addStringMethod = targetClass.getDeclaredMethod("addString");
-            CtMethod agentMethod = CtNewMethod.copy(addStringMethod, "addString$agent", targetClass, null);
+            CtMethod agentMethod = CtNewMethod.copy(addStringMethod, "addString$agentsimple", targetClass, null);
             targetClass.addMethod(agentMethod);
 
             String agentSrc = "{"
                     + "long begin = System.nanoTime();"
-                    + "Object result=addString$agent($$);"
+                    + "Object result=addString$agentsimple($$);"
                     + "long end = System.nanoTime();"
                     + "System.out.println(end-begin);"
                     + "return result;"
@@ -23,7 +23,7 @@ public class Monitor {
 
 //            String src="{"
 //                    + "long begin = System.nanoTime();"
-//                    + "Object result="+ addStringMethod.getName()+"$agent($$);"
+//                    + "Object result="+ addStringMethod.getName()+"$agentsimple($$);"
 //                    + "long end = System.nanoTime();"
 //                    + "System.out.println(end-begin);"
 //                    + "return ($r)result;"
