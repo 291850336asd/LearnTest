@@ -24,9 +24,9 @@ public class ServiceCollect extends AbstractByteTransformCollect implements ICol
 
     static {
         StringBuilder sbuilder = new StringBuilder();
-        sbuilder.append("com.tuling.apm.collects.ServiceCollect instance= ");
-        sbuilder.append("com.tuling.apm.collects.ServiceCollect.INSTANCE;\r\n");
-        sbuilder.append("com.tuling.apm.model.ServiceBean statistic =instance.begin(\"%s\",\"%s\");");
+        sbuilder.append("com.meng.example.agentadvance.collects.ServiceCollect instance= ");
+        sbuilder.append("com.meng.example.agentadvance.collects.ServiceCollect.INSTANCE;\r\n");
+        sbuilder.append("com.meng.example.agentadvance.model.ServiceBean statistic =instance.begin(\"%s\",\"%s\");");
         beginSrc = sbuilder.toString();
         sbuilder = new StringBuilder();
         sbuilder.append("instance.end(statistic);");
