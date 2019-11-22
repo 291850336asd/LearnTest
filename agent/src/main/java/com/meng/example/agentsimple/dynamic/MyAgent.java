@@ -1,6 +1,6 @@
-package com.meng.exapmle.agentsimple.dynamic;
+package com.meng.example.agentsimple.dynamic;
 
-import com.meng.exapmle.agentsimple.c3p0.C3p0Agent;
+import com.meng.example.agentsimple.c3p0.C3p0Agent;
 
 import java.lang.instrument.Instrumentation;
 

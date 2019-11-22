@@ -1,4 +1,4 @@
-package com.meng.exapmle.agentsimple;
+package com.meng.example.agentsimple;
 
 public interface UserService {
     public void getUser();

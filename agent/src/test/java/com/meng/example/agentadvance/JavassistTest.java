@@ -1,7 +1,7 @@
-package com.meng.exapmle;
+package com.meng.example.agentadvance;
 
-import com.meng.exapmle.agentsimple.UserService;
-import com.meng.exapmle.agentsimple.UserServiceImpl;
+import com.meng.example.agentsimple.UserService;
+import com.meng.example.agentsimple.UserServiceImpl;
 import javassist.*;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -19,7 +19,7 @@ public class JavassistTest {
     public void updateMethod() throws NotFoundException, CannotCompileException, IOException {
         ClassPool pool = new ClassPool();
         pool.appendSystemPath();
-        CtClass ctl = pool.get("com.meng.exapmle.agentsimple.UserServiceImpl");
+        CtClass ctl = pool.get("UserServiceImpl");
         CtField f = new CtField(pool.get(String.class.getName()), "abc", ctl);
         ctl.addField(f);
         CtMethod mehod = ctl.getDeclaredMethod("getUser");
@@ -31,7 +31,7 @@ public class JavassistTest {
         File file = new File(System.getProperty("user.dir") + "/target/UserServiceImpl.class");
         file.createNewFile();
         Files.write(file.toPath(), ctl.toBytecode());
-        com.meng.exapmle.agentsimple.UserServiceImpl userService =  new com.meng.exapmle.agentsimple.UserServiceImpl();
+        UserServiceImpl userService =  new UserServiceImpl();
         userService.addUser("meng1", "man");
         userService.getUser();
 
@@ -66,7 +66,7 @@ public class JavassistTest {
             localClassLoader.setCodeByte(ctl.toBytecode());
             Class serviceClass = localClassLoader.findClass(ctl.getName());
             //此处必须使用接口否则转化失败是因为classloader不用
-            //java.lang.ClassCastException: com.meng.exapmle.agentsimple.UserServiceImpl cannot be cast to com.meng.exapmle.agentsimple.UserServiceImpl
+            //java.lang.ClassCastException: UserServiceImpl cannot be cast to UserServiceImpl
             UserService userService1 = (UserService) serviceClass.newInstance();
             userService1.addUser("haha", "oo");
             userService1.getUser();
@@ -95,7 +95,7 @@ public class JavassistTest {
     public void update() throws NotFoundException, CannotCompileException, IOException {
         ClassPool pool = new ClassPool();
         pool.appendSystemPath();
-        CtClass ctl = pool.get("com.meng.exapmle.agentsimple.UserServiceImpl");
+        CtClass ctl = pool.get("UserServiceImpl");
         CtMethod mehod = ctl.getDeclaredMethod("addUser");
         mehod.insertBefore("System.out.println($0);");
         mehod.insertBefore("System.out.println($1);");

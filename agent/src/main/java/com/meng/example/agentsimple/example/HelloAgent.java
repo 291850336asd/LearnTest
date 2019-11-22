@@ -1,4 +1,4 @@
-package com.meng.exapmle.agentsimple.example;
+package com.meng.example.agentsimple.example;
 
 import javassist.*;
 
@@ -30,7 +30,7 @@ public class HelloAgent {
         System.out.println(agentArgs);
 
         //给UserServiceImpl 的getUser方法注入 打印时间戳的log
-        String cName = "com.meng.exapmle.agentsimple.UserServiceImpl";
+        String cName = "UserServiceImpl";
 
         //转化原始字节码文件
         instrumentation.addTransformer(new ClassFileTransformer() {
