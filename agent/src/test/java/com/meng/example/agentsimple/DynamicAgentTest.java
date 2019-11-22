@@ -1,4 +1,4 @@
-package com.meng.example.agentadvance;
+package com.meng.example.agentsimple;
 
 
 import org.junit.Ignore;

@@ -1,7 +1,5 @@
-package com.meng.example.agentadvance;
+package com.meng.example.agentsimple;
 
-import com.meng.example.agentsimple.UserService;
-import com.meng.example.agentsimple.UserServiceImpl;
 import javassist.*;
 import org.junit.Ignore;
 import org.junit.Test;

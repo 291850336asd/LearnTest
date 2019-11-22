@@ -1,4 +1,4 @@
-package com.meng.example.agentadvance;
+package com.meng.example.agentsimple;
 
 import com.meng.example.agentsimple.UserServiceImpl;
 import org.junit.Test;
