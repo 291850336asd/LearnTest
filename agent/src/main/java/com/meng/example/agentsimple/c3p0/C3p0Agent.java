@@ -18,6 +18,7 @@ import java.util.concurrent.Executors;
 
 public class C3p0Agent implements ClassFileTransformer {
 
+
     static String targetClass = "com.mchange.v2.c3p0.ComboPooledDataSource";
 
     public  C3p0Agent() {
@@ -61,9 +62,9 @@ public class C3p0Agent implements ClassFileTransformer {
     @Override
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
         byte[] result = null;
+        ClassPool  pool = new ClassPool();
+        pool.insertClassPath(new LoaderClassPath(loader));
         if (className != null && className.replace("/", ".").equals(targetClass)) {
-            ClassPool pool = new ClassPool();
-            pool.insertClassPath(new LoaderClassPath(loader));
             try {
                 CtClass ctl = pool.get(targetClass);
                 ctl.getConstructor("()V")
@@ -72,6 +73,23 @@ public class C3p0Agent implements ClassFileTransformer {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        } else if(className.replace("/", ".").equals("com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource")){
+          try {
+              System.out.println(className);
+              CtClass ctl = pool.get(className.replace("/", "."));
+              CtMethod method = ctl.getDeclaredMethod("getConnection");
+              CtMethod agentMethod = CtNewMethod.copy(method, method.getName()+"$agent", ctl, null);
+              ctl.addMethod(agentMethod);
+              String newSrc = "{ Object result = " + method.getName() + "$agent($$);" +
+                      "com.meng.example.agentsimple.c3p0.C3p0ConnectProxy proxy = " +
+                      "new com.meng.example.agentsimple.c3p0.C3p0ConnectProxy(result);" +
+                      "return ($r) proxy.getProxy(); }";
+              method.setBody(newSrc);
+              result = ctl.toBytecode();
+          }catch (Exception e){
+              e.printStackTrace();
+          }
+
         }
         return result;
     }
