@@ -28,11 +28,7 @@ public abstract class AbstractByteTransformCollect {
 
                 try {
                     return AbstractByteTransformCollect.this.transform(loader, className);
-                } catch (CannotCompileException e) {
-                    throw new RuntimeException("转换失败:", e);
-                } catch (NotFoundException e) {
-                    throw new RuntimeException("转换失败:", e);
-                } catch (IOException e) {
+                } catch (Exception e) {
                     throw new RuntimeException("转换失败:", e);
                 }
             }
@@ -41,7 +37,7 @@ public abstract class AbstractByteTransformCollect {
 
 
     // 插桩
-    public abstract byte[] transform(ClassLoader loader, String className) throws CannotCompileException, NotFoundException, IOException;
+    public abstract byte[] transform(ClassLoader loader, String className) throws Exception;
 
     protected static CtClass toCtClass(ClassLoader loader, String className) throws NotFoundException {
         if (!classPoolMap.containsKey(loader)) {

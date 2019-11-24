@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @Getter
 @Setter
-public class ServiceBean extends BaseBean implements Serializable {
+public class ServiceBean extends BaseStatistics implements Serializable {
 
     public Long begin;
     public Long end;
@@ -17,5 +17,10 @@ public class ServiceBean extends BaseBean implements Serializable {
     public String serviceName; //服务名称
     public String simpleName; //服务简称
     public String methodName; //方法名称
+
+
+    public ServiceBean(){
+        super();
+    }
 
 }

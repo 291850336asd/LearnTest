@@ -1,25 +1,30 @@
-package com.meng.apm.service.monitor.collects;
+package com.meng.example.agentadvance.collects;
 
-import com.meng.apm.service.monitor.AbstractCollects;
-import com.meng.apm.service.monitor.AgentLoader;
-import com.meng.apm.service.monitor.Collect;
-import com.meng.apm.service.monitor.NotProguard;
+import com.meng.example.agentadvance.ApmContext;
+import com.meng.example.agentadvance.ICollect;
+import com.meng.example.agentadvance.model.JdbcStatistics;
 import javassist.CtClass;
 import javassist.CtMethod;
 
+import java.lang.instrument.Instrumentation;
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-/**
- * jdbc 数据采集
- */
-@NotProguard
-public class JdbcCommonCollects extends AbstractCollects implements Collect {
-    @NotProguard
-    public static final JdbcCommonCollects INSTANCE = new JdbcCommonCollects();
+public class JdbcCommonCollects extends AbstractByteTransformCollect implements ICollect {
+
+    public static  JdbcCommonCollects INSTANCE;
+    private ApmContext context;
+
+    public JdbcCommonCollects(ApmContext context, Instrumentation instrumentation) {
+        super(instrumentation);
+        INSTANCE=this;
+        this.context=context;
+    }
+
 
     private final static String[] connection_agent_methods = new String[]{"prepareStatement"};
     private final static String[] prepared_statement_methods = new String[]{"execute", "executeUpdate", "executeQuery"};
@@ -29,41 +34,48 @@ public class JdbcCommonCollects extends AbstractCollects implements Collect {
 
     static {
         // connect
-        beginSrc = "com.meng.apm.service.monitor.collects.JdbcCommonCollects inst=com.meng.apm.service.monitor.collects.JdbcCommonCollects.INSTANCE;";
+        beginSrc = "com.meng.example.agentadvance.collects.JdbcCommonCollects inst=com.meng.example.agentadvance.collects.JdbcCommonCollects.INSTANCE;";
         errorSrc = "inst.error(null,e);";
         endSrc = "result=inst.proxyConnection((java.sql.Connection)result);";
     }
 
-    public boolean isTarget(String className, ClassLoader loader, CtClass ctclass) {
-        if (className.equals("com.mysql.jdbc.NonRegisteringDriver")) {
-            return true;
-        }
-        return false;
-    }
-    @NotProguard
-    @Override
-    public Statistics begin(String className, String method) {
-        JdbcStatistics jdbcStat = new JdbcStatistics(super.begin(className, method));
-        jdbcStat.logType = "sql";
+
+
+    public JdbcStatistics begin(String className, String method) {
+        JdbcStatistics jdbcStat = new JdbcStatistics();
+        jdbcStat.begin=System.currentTimeMillis();
+        jdbcStat.setRecordModel("jdbc");
         return jdbcStat;
     }
 
-    @NotProguard
-    @Override
-    public void end(Statistics stat) {
+
+
+    public void end(JdbcStatistics stat) {
         JdbcStatistics jdbcStat= (JdbcStatistics) stat;
+        jdbcStat.end=System.currentTimeMillis();
+        jdbcStat.usrTime=jdbcStat.end-jdbcStat.begin;
         if (jdbcStat.jdbcUrl != null) {
             jdbcStat.databaseName = getDbName(jdbcStat.jdbcUrl);
         }
-        super.end(stat);
+        this.context.submitCollectResult(stat);
     }
 
-    @Override
-    public void sendStatistics(Statistics stat) {
-        sendStatisticByHttp(stat, "sqlLog");
+    public void error(JdbcStatistics stat, Throwable throwable) {
+        if (stat != null) {
+            stat.error = throwable.getMessage();
+            stat.errorType = throwable.getClass().getName();
+            if (throwable instanceof InvocationTargetException) {
+                stat.errorType = ((InvocationTargetException) throwable).getTargetException().getClass().getName();
+                stat.error = ((InvocationTargetException) throwable).getTargetException().getMessage();
+            }
+        }
     }
 
-    @NotProguard
+    public void sendStatistics(JdbcStatistics stat) {
+
+    }
+
+
     public Connection proxyConnection(final Connection connection) {
         Object c = Proxy.newProxyInstance(JdbcCommonCollects.class.getClassLoader()
                 , new Class[]{Connection.class}, new ConnectionHandler(connection));
@@ -77,11 +89,15 @@ public class JdbcCommonCollects extends AbstractCollects implements Collect {
         return (PreparedStatement) c;
     }
 
-    public byte[] transform(ClassLoader loader, String className, byte[] classfileBuffer, CtClass ctclass) throws Exception {
-        AgentLoader byteLoade = new AgentLoader(className, loader, ctclass);
+    public byte[] transform(ClassLoader loader, String className) throws Exception {
+        if (!className.equals("com.mysql.jdbc.NonRegisteringDriver")) {
+            return null;
+        }
+        CtClass ctclass = super.toCtClass(loader, className);
+        AgentByteBuild byteLoade = new AgentByteBuild(className, loader, ctclass);
         CtMethod connectMethod = ctclass.getMethod("connect", "(Ljava/lang/String;Ljava/util/Properties;)Ljava/sql/Connection;");
 //      connectMethod.getMethodInfo().getDescriptor();
-        AgentLoader.MethodSrcBuild build = new AgentLoader.MethodSrcBuild();
+        AgentByteBuild.MethodSrcBuild build = new AgentByteBuild.MethodSrcBuild();
         build.setBeginSrc(beginSrc);
         build.setErrorSrc(errorSrc);
         build.setEndSrc(endSrc);
@@ -111,7 +127,7 @@ public class JdbcCommonCollects extends AbstractCollects implements Collect {
             JdbcStatistics jdbcStat = null;
             try {
                 if (isTargetMethod) { // 获取PreparedStatement 开始统计
-                    jdbcStat = (JdbcStatistics) JdbcCommonCollects.this.begin(null, null);
+                    jdbcStat = JdbcCommonCollects.this.begin(null, null);
                     jdbcStat.jdbcUrl = connection.getMetaData().getURL();
                     jdbcStat.sql = (String) args[0];
                 }
@@ -167,23 +183,8 @@ public class JdbcCommonCollects extends AbstractCollects implements Collect {
         }
     }
 
-    @NotProguard
-    public static class JdbcStatistics extends Statistics {
-        // jdbc url
-        public String jdbcUrl;
-        // sql 语句
-        public String sql;
-        // 数据库名称
-        public String databaseName;
 
 
-        public JdbcStatistics() {
-
-        }
-        public JdbcStatistics(Statistics stat) {
-            super(stat);
-        }
-    }
 
     private static String getDbName(String url) {
         int index = url.indexOf("?"); //$NON-NLS-1$

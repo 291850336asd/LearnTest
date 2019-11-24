@@ -80,7 +80,7 @@ public class C3p0Agent implements ClassFileTransformer {
               CtMethod method = ctl.getDeclaredMethod("getConnection");
               CtMethod agentMethod = CtNewMethod.copy(method, method.getName()+"$agent", ctl, null);
               ctl.addMethod(agentMethod);
-              String newSrc = "{ Object result = " + method.getName() + "$agent($$);" +
+              String newSrc = "{ Object result = ($w)" + method.getName() + "$agent($$);" +
                       "com.meng.example.agentsimple.c3p0.C3p0ConnectProxy proxy = " +
                       "new com.meng.example.agentsimple.c3p0.C3p0ConnectProxy(result);" +
                       "return ($r) proxy.getProxy(); }";
