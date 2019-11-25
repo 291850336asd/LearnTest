@@ -44,7 +44,6 @@ public class JdbcCollectTest {
         statment.executeQuery();
         statment.close();
         conn.close();
-
     }
 
 }

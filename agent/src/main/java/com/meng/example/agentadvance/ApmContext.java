@@ -1,5 +1,6 @@
 package com.meng.example.agentadvance;
 
+import com.meng.example.agentadvance.collects.JdbcCommonCollects;
 import com.meng.example.agentadvance.collects.ServiceCollect;
 import com.meng.example.agentadvance.filter.JSONFormat;
 import com.meng.example.agentadvance.output.JulOutput;
@@ -20,7 +21,8 @@ public class ApmContext {
     public ApmContext(Properties properties, Instrumentation instrumentation) {
         this.properties = properties;
         this.instrumentation = instrumentation;
-        collects.add(new ServiceCollect(this, instrumentation));
+//        collects.add(new ServiceCollect(this, instrumentation));
+        collects.add(new JdbcCommonCollects(this, instrumentation));
         filter = new JSONFormat();
         output = new JulOutput();
     }
