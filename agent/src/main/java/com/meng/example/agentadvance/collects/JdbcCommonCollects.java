@@ -53,7 +53,7 @@ public class JdbcCommonCollects extends AbstractByteTransformCollect implements 
     public void end(JdbcStatistics stat) {
         JdbcStatistics jdbcStat= (JdbcStatistics) stat;
         jdbcStat.end=System.currentTimeMillis();
-        jdbcStat.usrTime=jdbcStat.end-jdbcStat.begin;
+        jdbcStat.usedTime =jdbcStat.end-jdbcStat.begin;
         if (jdbcStat.jdbcUrl != null) {
             jdbcStat.databaseName = getDbName(jdbcStat.jdbcUrl);
         }

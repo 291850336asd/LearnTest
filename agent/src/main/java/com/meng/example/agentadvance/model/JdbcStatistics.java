@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class JdbcStatistics extends BaseStatistics {
     public Long begin;
     public Long end;
-    public Long usrTime;
+    public Long usedTime;
     // jdbc url
     public String jdbcUrl;
     // sql 语句
