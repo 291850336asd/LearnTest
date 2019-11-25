@@ -33,7 +33,7 @@ public class ApmContext {
     }
 
     public String getConfig(String key) {
-        return null;
+        return properties.getProperty(key);
     }
 
     public List<ICollect> getCollects() {

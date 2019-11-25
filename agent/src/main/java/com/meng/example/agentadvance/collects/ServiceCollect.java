@@ -2,6 +2,7 @@ package com.meng.example.agentadvance.collects;
 
 import com.meng.example.agentadvance.ApmContext;
 import com.meng.example.agentadvance.ICollect;
+import com.meng.example.agentadvance.common.WildcardMatcher;
 import com.meng.example.agentadvance.model.ServiceBean;
 import javassist.*;
 
@@ -15,8 +16,8 @@ import java.lang.instrument.Instrumentation;
 public class ServiceCollect extends AbstractByteTransformCollect implements ICollect {
     public static ServiceCollect INSTANCE;
     private final ApmContext context;
-    private String include;
-    private String exclude;
+    private WildcardMatcher includeMatcher;
+    private WildcardMatcher excludeMatcher;
 
     private static final String beginSrc;
     private static final String endSrc;
@@ -40,9 +41,13 @@ public class ServiceCollect extends AbstractByteTransformCollect implements ICol
     // exclude
     public ServiceCollect(ApmContext context, Instrumentation instrumentation) {
         super(instrumentation);
+        if(context.getConfig("service.include") != null){
+            includeMatcher = new WildcardMatcher(context.getConfig("service.include"));
+        }
+        if(context.getConfig("service.exclude") != null){
+            excludeMatcher = new WildcardMatcher(context.getConfig("service.exclude"));
+        }
         this.context = context;
-        include = context.getConfig("service.include");
-        exclude = context.getConfig("service.exclude");
         INSTANCE = this;
     }
 
@@ -70,9 +75,21 @@ public class ServiceCollect extends AbstractByteTransformCollect implements ICol
 
     @Override
     public byte[] transform(ClassLoader loader, String className) throws CannotCompileException, NotFoundException, IOException {
-        if (!className.endsWith("ServiceImpl")) {
+
+        if(includeMatcher == null) {
             return null;
         }
+        if(!includeMatcher.matches(className)){
+            return null;
+        }
+
+        if(excludeMatcher != null && excludeMatcher.matches(className)){
+            return null;
+        }
+
+//        if (!className.endsWith("ServiceImpl")) {
+//            return null;
+//        }
         CtClass ctclass = toCtClass(loader, className);
         AgentByteBuild byteLoade = new AgentByteBuild(className, loader, ctclass);
         CtMethod[] methods = ctclass.getDeclaredMethods();
