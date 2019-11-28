@@ -11,7 +11,7 @@ import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 
 /**
- * 挖矿并交易
+ * 挖矿并一对一简单交易
  */
 public class BlockchainTest {
 
