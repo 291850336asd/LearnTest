@@ -46,7 +46,9 @@ public class BlockchainTest {
         transactionList.add(sysTx);
         //加入当前交易集合
         Transaction transaction1 = new Transaction();
+        //transaction1 set方法无意义，只是为了配合transaction2
         transaction1.setId(CryptoUtil.UUID());
+        transaction1.setTxOut(new TransactionOutput(0, CryptoUtil.UUID()));
         Transaction transaction2 = new Transaction();
         transactionList.add(transaction1);
         transactionList.add(transaction2);
@@ -74,7 +76,7 @@ public class BlockchainTest {
         while (true) {
 
             hash = CryptoUtil.SHA256(latestBlock.getHash() + JSON.toJSONString(transactionList) + nonce);
-            if(hash.startsWith("0000")){
+            if(hash.startsWith("00000")){
                 System.out.println("=====计算结果正确，计算次数为：" +nonce+ ",hash:" + hash);
                 break;
             }

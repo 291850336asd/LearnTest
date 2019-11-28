@@ -49,7 +49,8 @@ public class Transaction {
             System.err.println("交易签名失败：当前交易输入引用的前一笔交易与传入的前一笔交易不匹配");
         }
 
-            Transaction txClone = cloneTx();
+        Transaction txClone = cloneTx();
+        //形成签名链
         txClone.getTxIn().setPublicKey(prevTx.getTxOut().getPublicKeyHash());
         String sign = "";
         try {
