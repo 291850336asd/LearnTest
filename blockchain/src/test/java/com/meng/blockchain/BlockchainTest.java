@@ -2,6 +2,7 @@ package com.meng.blockchain;
 
 import com.meng.blockchain.model.Block;
 import com.meng.blockchain.model.Transaction;
+import com.meng.blockchain.model.Wallet;
 import com.meng.blockchain.security.CryptoUtil;
 import org.junit.Before;
 
@@ -73,4 +74,9 @@ public class BlockchainTest {
     }
 
 
+    @Test
+    public void testGenWallet() throws Exception {
+        Wallet wallet = Wallet.generateWallet();
+        System.out.println(JSON.toJSON(wallet));
+    }
 }
