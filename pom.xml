@@ -10,6 +10,7 @@
     <modules>
         <module>logging</module>
         <module>agent</module>
+        <module>blockchain</module>
     </modules>
     <packaging>pom</packaging>
     <build>
