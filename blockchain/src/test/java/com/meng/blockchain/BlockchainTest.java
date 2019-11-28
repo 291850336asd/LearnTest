@@ -24,9 +24,9 @@ public class BlockchainTest {
     public void testBlockChain() throws Exception {
         //创建一个空的区块链
         List<Block> blockChain = new ArrayList<>();
-        //初始化创世区块  默认index为1 交易数为0等
+        //初始化创始区块  默认index为1 交易数为0等
         Block beginBlock = new Block(1, System.currentTimeMillis(), new ArrayList<>(), 1, "1", "1");
-        //将创世区块加入到区域链
+        //将创始区块加入到区域链
         blockChain.add(beginBlock);
         System.out.println(JSON.toJSONString(blockChain));
         digMine(blockChain);

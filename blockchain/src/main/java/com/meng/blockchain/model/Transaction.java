@@ -73,6 +73,35 @@ public class Transaction {
     }
 
     /**
+     * 验证交易签名
+     *
+     * @param prevTx
+     * @return
+     */
+    public boolean verify(Transaction prevTx) {
+        if (coinbaseTx()) {
+            return true;
+        }
+
+        if (!prevTx.getId().equals(txIn.getTxId())) {
+            System.err.println("验证交易签名失败：当前交易输入引用的前一笔交易与传入的前一笔交易不匹配");
+        }
+
+        Transaction txClone = cloneTx();
+        txClone.getTxIn().setPublicKey(prevTx.getTxOut().getPublicKeyHash());
+
+        boolean result = false;
+        try {
+            result = RSACoder.verify(txClone.hash().getBytes(), txIn.getPublicKey(), txIn.getSignatrue());
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("通过上笔交易验证不合法！");
+        }
+        return result;
+    }
+
+
+    /**
      * 生成交易的hash
      *
      * @return
@@ -112,5 +141,30 @@ public class Transaction {
 
     public void setTxOut(TransactionOutput txOut) {
         this.txOut = txOut;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Transaction other = (Transaction) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
     }
 }
