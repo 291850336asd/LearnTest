@@ -1,19 +1,20 @@
 package com.meng.blockchain;
 
-import com.meng.blockchain.model.*;
+import com.alibaba.fastjson.JSON;
+import com.meng.blockchain.model.Block;
+import com.meng.blockchain.model.Transaction;
+import com.meng.blockchain.model.Wallet;
 import com.meng.blockchain.security.CryptoUtil;
 import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.alibaba.fastjson.JSON;
-import org.junit.Test;
-
 /**
- * 挖矿并交易
+ * 挖矿简单实现
  */
-public class BlockchainTest {
+public class BlockchainDigMineTest {
 
     @Before
     public void setup() throws Exception{
@@ -29,6 +30,7 @@ public class BlockchainTest {
         //将创世区块加入到区域链
         blockChain.add(beginBlock);
         System.out.println(JSON.toJSONString(blockChain));
+        //挖矿
         digMine(blockChain);
     }
 
@@ -46,25 +48,11 @@ public class BlockchainTest {
         transactionList.add(sysTx);
         //加入当前交易集合
         Transaction transaction1 = new Transaction();
-        transaction1.setId(CryptoUtil.UUID());
         Transaction transaction2 = new Transaction();
+        Transaction transaction3 = new Transaction();
         transactionList.add(transaction1);
         transactionList.add(transaction2);
-
-        transaction2.setId(CryptoUtil.UUID());
-
-        //交易发起方
-        Wallet walletSender = Wallet.generateWallet();
-        //交易接收方
-        Wallet walletReciptent = Wallet.generateWallet();
-
-        TransactionInput txIn = new TransactionInput(transaction1.getId(), 10, null,walletSender.getPublicKey());
-        transaction2.setTxIn(txIn);
-        TransactionOutput txOut = new TransactionOutput(10,walletReciptent.getHashPubKey());
-        transaction2.setTxOut(txOut);
-
-        //假设transaction1已经被打包进区块，也就是已经被记录到账本了
-        transaction2.sign(walletSender.getPrivateKey(),transaction1);
+        transactionList.add(transaction3);
 
 
         //获取当前区块链的最后一个区块的hash值
