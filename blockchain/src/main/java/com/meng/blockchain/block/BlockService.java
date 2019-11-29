@@ -219,7 +219,7 @@ public class BlockService {
      * @param address
      * @return
      */
-    public int getWallentBalance(String address){
+    public int getWalletBalance(String address){
         List<Transaction> unspentTxs = findUnspentTransactions(address);
         int balance = 0;
         for(Transaction transaction : unspentTxs){
