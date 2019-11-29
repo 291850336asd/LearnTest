@@ -29,7 +29,7 @@ java -jar blockchain.jar 8082 7002 ws://localhost:7001
 - 转账交易(POST)
 
   ```
-  curl -H "Content-type:application/json" --data '{"sender": "d4e44223434sdfdgerewfd3fefe9dfe","recipient": "45adiy5grt4544sdfdg454efe54dssq5","amount": 10}' http://localhost:8081/transactions/new
+  curl -H "Content-type:application/json" --data '{"sender": "senderhash","recipient": "recipienthash","amount": 10}' http://localhost:8081/transactions/new
   ```
   
 - 查询当前未记账交易(GET)
