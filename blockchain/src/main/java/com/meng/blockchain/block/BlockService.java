@@ -182,6 +182,7 @@ public class BlockService {
     private List<Transaction> findUnspentTransactions(String address){
         List<Transaction> unspentsTxs = new ArrayList<>();
         Set<String> spentTxs = new HashSet<>();
+        //获取已经花费的交易
         for(Transaction tx : allTransactions){
             if(tx.coinbaseTx()){
                 continue;
@@ -190,6 +191,8 @@ public class BlockService {
                 spentTxs.add(tx.getTxIn().getTxId());
             }
         }
+        //获取未花费的交易  allTransactions可能包含未打包的交易不能使用
+        //只能从区块链的交易集合获取
         for(Block block : blockChain){
             List<Transaction> transactions = block.getTransactions();
             for(Transaction transaction : transactions){
