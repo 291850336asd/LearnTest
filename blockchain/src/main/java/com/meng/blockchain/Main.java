@@ -6,6 +6,9 @@ import com.meng.blockchain.p2p.P2PClient;
 import com.meng.blockchain.p2p.P2PServer;
 import com.meng.blockchain.p2p.P2PService;
 
+/**
+ * 区块链启动入口
+ */
 public class Main {
 
     public static void main(String[] args) {
