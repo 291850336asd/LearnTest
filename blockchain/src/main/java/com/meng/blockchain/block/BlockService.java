@@ -4,10 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.meng.blockchain.model.*;
 import com.meng.blockchain.security.CryptoUtil;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 区块链核心服务
@@ -147,6 +144,90 @@ public class BlockService {
     }
 
     /**
+     * 创建交易
+     * @param senderWallet
+     * @param recipientWallet
+     * @param amount
+     * @return
+     */
+    public Transaction createTransaction(Wallet senderWallet, Wallet recipientWallet, int amount){
+        //查找未消费的交易
+        List<Transaction> unspentTxs = findUnspentTransactions(senderWallet.getAddress());
+        Transaction prevTx = null;
+        for(Transaction transaction : unspentTxs){
+            //TODO 找零或者 当前金额不一致如何处理
+            if(transaction.getTxOut().getValue() != amount){
+
+            } else {
+                prevTx = transaction;
+                break;
+            }
+        }
+        if(prevTx == null){
+            return null;
+        }
+        TransactionInput txIn = new TransactionInput(prevTx.getId(), amount, null,senderWallet.getPublicKey());
+        TransactionOutput txOut = new TransactionOutput(amount, recipientWallet.getHashPubKey());
+        Transaction transaction = new Transaction(CryptoUtil.UUID(), txIn, txOut);
+        transaction.sign(senderWallet.getPrivateKey(), prevTx);
+        allTransactions.add(transaction);
+        return transaction;
+    }
+
+    /**
+     * 查找未消费的交易
+     * @param address
+     * @return
+     */
+    private List<Transaction> findUnspentTransactions(String address){
+        List<Transaction> unspentsTxs = new ArrayList<>();
+        Set<String> spentTxs = new HashSet<>();
+        for(Transaction tx : allTransactions){
+            if(tx.coinbaseTx()){
+                continue;
+            }
+            if(address.equals(Wallet.getAddress(tx.getTxIn().getPublicKey()))){
+                spentTxs.add(tx.getTxIn().getTxId());
+            }
+        }
+        for(Block block : blockChain){
+            List<Transaction> transactions = block.getTransactions();
+            for(Transaction transaction : transactions){
+                if(address.equals(CryptoUtil.MD5(transaction.getTxOut().getPublicKeyHash()))){
+                    if(!spentTxs.contains(transaction.getId())){
+                        unspentsTxs.add(transaction);
+                    }
+                }
+            }
+        }
+        return unspentsTxs;
+    }
+
+    /**
+     * 创建钱包
+     * @return
+     */
+    public Wallet createWallet(){
+        Wallet wallet = Wallet.generateWallet();
+        String address = wallet.getAddress();
+        myWalletMap.put(address, wallet);
+        return wallet;
+    }
+
+    /**
+     * 获取钱包余额
+     * @param address
+     * @return
+     */
+    public int getWallentBalance(String address){
+        List<Transaction> unspentTxs = findUnspentTransactions(address);
+        int balance = 0;
+        for(Transaction transaction : unspentTxs){
+            balance += transaction.getTxOut().getValue();
+        }
+        return balance;
+     }
+    /**
      * 返回最后一个区块
      * @return
      */
@@ -165,6 +246,7 @@ public class BlockService {
             blockChain.add(newBlock);
             //新区块的交易需要加入已打包的交易集合里去
             packedTransactions.addAll(newBlock.getTransactions());
+            return true;
         }
         return false;
     }
@@ -193,6 +275,48 @@ public class BlockService {
         return true;
     }
 
+    /**
+     * 验证整个区块链是否有效
+     */
+    public boolean isValidChain(List<Block> chain){
+        Block block = null;
+        Block lastBlock = chain.get(0);
+        int currentIndex = 1;
+        while (currentIndex < chain.size()){
+            block = chain.get(currentIndex);
+            if(!isValidNewBlock(block, lastBlock)){
+                return false;
+            }
+            lastBlock = block;
+            currentIndex ++;
+        }
+        return true;
+    }
+
+    /**
+     * 替换本地区块链
+     * @param newBlocks
+     */
+    public void replaceChain(List<Block> newBlocks){
+        if(isValidChain(newBlocks) && newBlocks.size() > blockChain.size()){
+            blockChain = newBlocks;
+            //清除已打包交易结合
+            packedTransactions.clear();
+            blockChain.forEach(block ->{
+                packedTransactions.addAll(block.getTransactions());
+            });
+        } else {
+            System.out.println("接收的区块链无效");
+        }
+    }
+
+    /**
+     * 计算区块hash
+     * @param previousHash
+     * @param currentTransactions
+     * @param nonce
+     * @return
+     */
     private String calculateHash(String previousHash, List<Transaction> currentTransactions, long nonce) {
         return CryptoUtil.SHA256(previousHash + JSON.toJSONString(currentTransactions) + nonce);
     }
