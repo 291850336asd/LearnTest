@@ -11,6 +11,7 @@
         <module>logging</module>
         <module>agent</module>
         <module>blockchain</module>
+        <module>distributed-teach</module>
     </modules>
     <packaging>pom</packaging>
     <build>
