@@ -10,6 +10,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>distributed-teach</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>zookeeper-register</module>
+        <module>client</module>
+        <module>server</module>
+        <module>admin</module>
+    </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.32</version>
+        </dependency>
+    </dependencies>
 
 </project>
