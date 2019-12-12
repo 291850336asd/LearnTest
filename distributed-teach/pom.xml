@@ -12,10 +12,10 @@
     <artifactId>distributed-teach</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>zookeeper-register</module>
-        <module>client</module>
-        <module>server</module>
-        <module>admin</module>
+        <module>zookeepeer-easy-admin</module>
+        <module>zookeepeer-easy-client</module>
+        <module>zookeepeer-easy-server</module>
+        <module>zookeepeer-easy-admin</module>
     </modules>
 
     <dependencies>
@@ -23,6 +23,11 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.32</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.4.14</version>
         </dependency>
     </dependencies>
 
