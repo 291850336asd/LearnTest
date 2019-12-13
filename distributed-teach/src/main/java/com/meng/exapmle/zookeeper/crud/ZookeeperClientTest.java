@@ -1,4 +1,4 @@
-package com.meng.exapmle.zookeeper.zkclient.crud;
+package com.meng.exapmle.zookeeper.crud;
 
 public class ZookeeperClientTest {
 
