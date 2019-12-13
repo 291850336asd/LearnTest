@@ -58,7 +58,7 @@ public class ZookeeperLock implements Watcher {
             } else {
                 // lock_0001
                 String childZnode = currentNode.substring(currentNode.lastIndexOf("/") + 1);//获取当前节点
-                int num = Collections.binarySearch(lockObjNodes, childZnode);//当前节点去找下 看看在什么问题
+                int num = Collections.binarySearch(lockObjNodes, childZnode);//当前节点去找下 看看在什么位置
                 if(num==0){
                     num=1;
                 }
