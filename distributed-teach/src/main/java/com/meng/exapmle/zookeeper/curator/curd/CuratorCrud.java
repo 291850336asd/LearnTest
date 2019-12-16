@@ -1,4 +1,4 @@
-package com.meng.exapmle.zookeeper.curator;
+package com.meng.exapmle.zookeeper.curator.curd;
 
 import com.meng.exapmle.zookeeper.ZkConstants;
 import org.apache.curator.RetryPolicy;

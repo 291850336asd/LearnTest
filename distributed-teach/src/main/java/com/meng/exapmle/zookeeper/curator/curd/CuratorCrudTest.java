@@ -1,4 +1,4 @@
-package com.meng.exapmle.zookeeper.curator;
+package com.meng.exapmle.zookeeper.curator.curd;
 import java.util.List;
 
 public class CuratorCrudTest {
