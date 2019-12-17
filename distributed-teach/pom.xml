@@ -15,7 +15,7 @@
         <module>zookeepeer-easy-admin</module>
         <module>zookeepeer-easy-client</module>
         <module>zookeepeer-easy-server</module>
-
+        <module>zookeepeer-easy-register</module>
         <module>zookeepeer-easy-admin</module>
     </modules>
     <dependencies>

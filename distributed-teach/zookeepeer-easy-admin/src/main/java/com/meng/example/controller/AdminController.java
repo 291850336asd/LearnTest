@@ -4,16 +4,20 @@ package com.meng.example.controller;
 import com.alibaba.fastjson.JSON;
 import com.meng.example.AppRegister;
 import com.meng.example.NodeState;
+import org.apache.commons.io.IOUtils;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,7 +54,24 @@ public class AdminController {
         }
         return "admin";
 
+    }
+
+
+    @RequestMapping("/mointer/{command}")
+    public String list(HttpServletRequest request,@PathVariable String command) throws IOException {
+        String zk1=  hander("192.168.163.128",command);
+        request.setAttribute("zk1",zk1);
+        return "mointer";
 
     }
+
+    private String hander(String host,String command) throws IOException {
+        Socket socket=new Socket(host,2181);
+        OutputStream outputStream=socket.getOutputStream();
+        outputStream.write(command.getBytes());
+        outputStream.flush();
+        return IOUtils.toString(socket.getInputStream());
+    }
+
 
 }

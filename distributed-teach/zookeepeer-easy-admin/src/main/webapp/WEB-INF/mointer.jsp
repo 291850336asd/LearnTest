@@ -7,35 +7,37 @@
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"/>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"/>
 <html>
+<html>
 <head>
-    <title>SpringMVC</title>
+    <title>监控</title>
 </head>
 <body>
 
 
 <body>
-<h1><center>Zk服务注册中心后台管理</center></h1>
+<h1><center>Zookeeper运维命令</center></h1>
+<a class="btn" href="conf">conf</a>
+<a class="btn" href="cons">cons</a>
+<a class="btn" href="crst">crst</a>
+<a class="btn" href="dump">dump</a>
+<a class="btn" href="envi">envi</a>
+<a class="btn" href="ruok">ruok</a>
+<a class="btn" href="srst">srst</a>
+<a class="btn" href="srvr">srvr</a>
+<a class="btn" href="stat">stat</a>
+<a class="btn" href="wchs">wchs</a>
+<a class="btn" href="wchp">wchp</a>
+<a class="btn" href="mntr">mntr</a>
+
 <table class="table table-striped">
     <tr style="font-weight:bold">
-        <td>服务名</td>
-        <td>ip</td>
-        <td>端口</td>
-        <td>状态</td>
-        <td>客服端</td>
-        <td>节点</td>
+        <td>zk1</td>
     </tr>
-    <c:forEach items="${servetList}"  var="server">
-        <tr>
-            <td class="warning">${server.serverName}</td>
-            <td  class="success">${server.ip}</td>
-            <td class="danger">${server.port}</td>
-            <td class="warning">${server.status}</td>
-            <td class="danger">${server.clientName}</td>
-            <td class="success">${server.node}</td>
 
+        <tr>
+            <td class="warning">${zk1}</td>
         </tr>
 
-    </c:forEach>
 </table>
 
 </body>
