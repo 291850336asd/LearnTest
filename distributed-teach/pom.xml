@@ -17,6 +17,7 @@
         <module>zookeepeer-easy-server</module>
         <module>zookeepeer-easy-register</module>
         <module>zookeepeer-easy-admin</module>
+        <module>dubbo-easy-demo</module>
     </modules>
     <dependencies>
         <dependency>
