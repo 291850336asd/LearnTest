@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://dubbo.apache.org/schema/dubbo
+       http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+<!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="demo-provider">
+    </dubbo:application>
+
+    <dubbo:registry protocol="zookeeper" address="192.168.163.128:2181" check="true"/>
+    <!-- 用dubbo协议在2088端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="2088"/>
+
+    <dubbo:provider
+                    threadpool="fixed"
+                    threads="500"
+                    timeout="5000"
+                    retries="2"/>
+
+    <!-- 声明需要暴露的服务接口 -->
+    <dubbo:service interface="com.meng.example.easy.DemoService"
+                   timeout="5000"
+                   retries="1"
+                   group="com.meng.example.demo"
+                   version="1.0.0"
+                   ref="demoService">
+    </dubbo:service>
+
+    <dubbo:service interface="com.meng.example.easy.UserService"
+                   timeout="5000"
+                   retries="1"
+                   group="com.meng.example.user"
+                   version="1.0.0"
+                   ref="userService">
+    </dubbo:service>
+
+    <bean id="demoService" class="com.meng.example.easy.DemoServiceImpl"/>
+    <bean id="userService" class="com.meng.example.easy.UserServiceImpl"/>
+    
+</beans>

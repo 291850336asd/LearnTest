@@ -1,7 +1,7 @@
 package com.meng.example.easy;
 
 public class DemoServiceImpl implements DemoService {
-    public String sayHello(String name) {
+    public String sayHello(String name) throws BusException {
         return "Hello " + name;
     }
 
