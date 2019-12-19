@@ -6,6 +6,11 @@ public class DemoServiceImpl implements DemoService {
     }
 
     @Override
+    public String sayHello() throws BusException {
+        return "ok";
+    }
+
+    @Override
     public String sayHello2(String name) {
         return "Hello2 " + name;
     }

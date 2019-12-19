@@ -16,6 +16,8 @@ public class RedisConsumer {
         System.out.println(str);
         String str1 = demoService.sayHello2("meng");
         System.out.println(str1);
+        str1 = demoService.sayHello();
+        System.out.println(str1);
         System.in.read();
 
     }
