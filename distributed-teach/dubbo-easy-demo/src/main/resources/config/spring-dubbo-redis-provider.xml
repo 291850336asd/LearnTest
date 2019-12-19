@@ -10,18 +10,25 @@
 <!-- 提供方应用信息，用于计算依赖关系 -->
     <dubbo:application name="demo-provider">
     </dubbo:application>
-    <!-- 使用multicast广播注册中心暴露服务地址 -->
-<!--    <dubbo:registry address="multicast://224.5.6.7:1234" />-->
+
     <dubbo:registry protocol="redis" address="192.168.163.128:6379" check="true"/>
     <!-- 用dubbo协议在2088端口暴露服务 -->
     <dubbo:protocol name="dubbo" port="2088"/>
+
+    <dubbo:provider group="com.meng.example.user"
+                    threadpool="fixed"
+                    threads="500"
+                    timeout="5000"
+                    retries="2"/>
+
     <!-- 声明需要暴露的服务接口 -->
-    <dubbo:service interface="com.meng.example.DemoService" ref="demoService">
-        <dubbo:method name="sayHello2"/>
+    <dubbo:service interface="com.meng.example.DemoService"
+                   timeout="5000"
+                   retries="1"
+                   version="1.0.0"
+                   ref="demoService">
     </dubbo:service>
-    <dubbo:service interface="com.meng.example.UserService" ref="userService"/>
 
     <bean id="demoService" class="com.meng.example.DemoServiceImpl"/>
-    <bean id="userService" class="com.meng.example.UserServiceImpl"/>
     
 </beans>
