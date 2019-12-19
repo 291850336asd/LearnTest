@@ -17,6 +17,7 @@
     <dubbo:protocol name="dubbo" port="2088" />
     <!-- 声明需要暴露的服务接口 -->
     <dubbo:service interface="com.meng.example.DemoService" ref="demoService">
+        <dubbo:method name="sayHello2"/>
     </dubbo:service>
     <dubbo:service interface="com.meng.example.UserService" ref="userService"/>
 

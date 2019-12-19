@@ -13,7 +13,8 @@ public class Consumer {
         DemoService demoService = (DemoService) context.getBean("demoService");
         String str = demoService.sayHello("meng");
         System.out.println(str);
-
+        str = demoService.sayHello2("meng");
+        System.out.println(str);
         while (true) {
             byte[] b = new byte[1024];
             int szie = System.in.read(b);
