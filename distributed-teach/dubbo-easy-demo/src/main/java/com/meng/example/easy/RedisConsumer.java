@@ -1,4 +1,4 @@
-package com.meng.example;
+package com.meng.example.easy;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -8,7 +8,7 @@ public class RedisConsumer {
 
     public static void main(String[] args) throws IOException {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-                "config/spring-dubbo-redis-consumer.xml");
+                "config-easy/spring-dubbo-redis-consumer.xml");
         context.start();
         System.out.println("消费者启动");
         DemoService demoService = (DemoService) context.getBean("demoService");

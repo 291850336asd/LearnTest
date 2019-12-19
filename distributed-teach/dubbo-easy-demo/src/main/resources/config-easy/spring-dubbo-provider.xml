@@ -16,12 +16,12 @@
     <!-- 用dubbo协议在2088端口暴露服务 -->
     <dubbo:protocol name="dubbo" port="2088"/>
     <!-- 声明需要暴露的服务接口 -->
-    <dubbo:service interface="com.meng.example.DemoService" ref="demoService">
+    <dubbo:service interface="com.meng.example.easy.DemoService" ref="demoService">
         <dubbo:method name="sayHello2"/>
     </dubbo:service>
-    <dubbo:service interface="com.meng.example.UserService" ref="userService"/>
+    <dubbo:service interface="com.meng.example.easy.UserService" ref="userService"/>
 
-    <bean id="demoService" class="com.meng.example.DemoServiceImpl"/>
-    <bean id="userService" class="com.meng.example.UserServiceImpl"/>
+    <bean id="demoService" class="com.meng.example.easy.DemoServiceImpl"/>
+    <bean id="userService" class="com.meng.example.easy.UserServiceImpl"/>
     
 </beans>

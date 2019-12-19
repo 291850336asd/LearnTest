@@ -1,4 +1,4 @@
-package com.meng.example;
+package com.meng.example.easy;
 
 public class DemoServiceImpl implements DemoService {
     public String sayHello(String name) {

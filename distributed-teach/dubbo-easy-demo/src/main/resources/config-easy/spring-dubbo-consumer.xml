@@ -14,12 +14,11 @@
         <dubbo:parameter key="qos.port" value="33333" />
     </dubbo:application>
 
+    <!-- 使用multicast广播注册中心暴露发现服务地址 -->
+<!--    <dubbo:registry address="multicast://224.5.6.7:1234" />-->
     <dubbo:registry protocol="redis" address="192.168.163.128:6379" check="true"/>
     <dubbo:protocol name="dubbo" port="2088" />
-
-    <dubbo:consumer timeout="5000" retries="2" group="com.meng.example.user" version="1.0.0"/>
-
     <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
-    <dubbo:reference id="demoService" retries="1" timeout="5000" version="*"  interface="com.meng.example.DemoService" />
+    <dubbo:reference id="demoService"   interface="com.meng.example.easy.DemoService" />
     
 </beans>

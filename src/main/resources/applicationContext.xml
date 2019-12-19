@@ -13,7 +13,7 @@
 <!--		<bean id="myAspect" class="com.tl.aspect.MyAspect"></bean>-->
 <!--		-->
 <!--		&lt;!&ndash; AOP配置 &ndash;&gt;-->
-<!--		<aop:config>-->
+<!--		<aop:config-easy>-->
 <!--			&lt;!&ndash; 切点 &ndash;&gt;-->
 <!--			<aop:pointcut expression="execution(* com.tl.service.impl.*.*(..))" id="p1"/>-->
 <!--			&lt;!&ndash; 在切点上织入通知 &ndash;&gt;-->
@@ -23,5 +23,5 @@
 <!--				&ndash;&gt;-->
 <!--				<aop:before method="before" pointcut-ref="p1"/>-->
 <!--			</aop:aspect>-->
-<!--		</aop:config>-->
+<!--		</aop:config-easy>-->
 </beans>

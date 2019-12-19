@@ -22,13 +22,13 @@
                     retries="2"/>
 
     <!-- 声明需要暴露的服务接口 -->
-    <dubbo:service interface="com.meng.example.DemoService"
+    <dubbo:service interface="com.meng.example.easy.DemoService"
                    timeout="5000"
                    retries="1"
                    version="1.0.0"
                    ref="demoService">
     </dubbo:service>
 
-    <bean id="demoService" class="com.meng.example.DemoServiceImpl"/>
+    <bean id="demoService" class="com.meng.example.easy.DemoServiceImpl"/>
     
 </beans>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <c3p0-config>
-    <!-- This is default config! -->
+    <!-- This is default config-easy! -->
     <default-config>
         <property name="initialPoolSize">10</property>
         <property name="maxIdleTime">30</property>
@@ -9,7 +9,7 @@
         <property name="maxStatements">200</property>
     </default-config>
 
-    <!-- This is my config for mysql-->
+    <!-- This is my config-easy for mysql-->
     <named-config name="mysql">
         <property name="driverClass">com.mysql.jdbc.Driver</property>
         <property name="jdbcUrl">jdbc:mysql://192.168.163.128:3306/test?useUnicode=true&amp;characterEncoding=UTF8</property>

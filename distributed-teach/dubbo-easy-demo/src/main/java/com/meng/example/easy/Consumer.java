@@ -1,4 +1,4 @@
-package com.meng.example;
+package com.meng.example.easy;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -7,7 +7,7 @@ import java.io.IOException;
 public class Consumer {
 
     public static void main(String[] args) throws IOException {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("config/spring-dubbo-consumer.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("config-easy/spring-dubbo-consumer.xml");
         context.start();
         System.out.println("消费者启动");
         DemoService demoService = (DemoService) context.getBean("demoService");

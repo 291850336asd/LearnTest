@@ -26,7 +26,7 @@ deploy_war(){
   fi
   unzip -q $war -d $target_dir
   # 复制配置文件到classes目录
-  # cp -r app-config/* $target_dir/WEB-INF/classes
+  # cp -r app-config-easy/* $target_dir/WEB-INF/classes
   # 删除软连接
   rm -f appwar
   # 创建软连接
