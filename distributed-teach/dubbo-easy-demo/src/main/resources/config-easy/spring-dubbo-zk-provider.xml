@@ -13,7 +13,7 @@
 
     <dubbo:registry protocol="zookeeper" address="192.168.163.128:2181" check="true"/>
     <!-- 用dubbo协议在2088端口暴露服务 -->
-    <dubbo:protocol name="dubbo" port="2088"/>
+    <dubbo:protocol name="dubbo" port="2088"/><!-- host 一般不指定，一般在多网卡的情况下设置 -->
 
     <dubbo:provider
                     threadpool="fixed"
