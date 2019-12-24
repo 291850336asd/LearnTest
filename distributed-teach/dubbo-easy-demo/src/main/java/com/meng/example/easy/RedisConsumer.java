@@ -1,7 +1,6 @@
 package com.meng.example.easy;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import java.io.IOException;
 
 public class RedisConsumer {
