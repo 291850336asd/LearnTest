@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <dubbo:application name="demo-provider"/>
+    <dubbo:registry protocol="zookeeper" address="192.168.163.128:2181" check="true"/>
+
+
+    <dubbo:protocol  name="dubbo" port="-1" serialization="fastjson" />
+
+
+    <dubbo:service interface="com.meng.example.easy.DemoService" ref="demoService"/>
+    
+    <dubbo:service interface="com.meng.example.easy.UserService" ref="userServiceImpl"/>
+
+    <dubbo:service interface="com.meng.example.failcluster.ClusterDemoService" ref="clusterServiceImpl"/>
+    
+    <bean id="demoService" class="com.meng.example.easy.DemoServiceImpl"/>
+    <bean id="userServiceImpl" class="com.meng.example.easy.UserServiceImpl"/>
+
+    <bean id="clusterServiceImpl" class="com.meng.example.failcluster.ClusterServiceImpl"/>
+</beans>
