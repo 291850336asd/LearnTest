@@ -18,6 +18,7 @@
         <module>zookeepeer-easy-register</module>
         <module>zookeepeer-easy-admin</module>
         <module>dubbo-easy-demo</module>
+        <module>redis</module>
     </modules>
     <dependencies>
         <dependency>
