@@ -1,8 +1,6 @@
-package com.meng.redis.redis.redisprotolog;
+package com.meng.example.redis.redis.redisprotolog;
 
 import redis.clients.jedis.Jedis;
-
-import java.util.Collections;
 
 public class RedisTest {
 

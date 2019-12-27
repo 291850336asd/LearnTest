@@ -1,4 +1,4 @@
-package com.meng.redis.redisson;
+package com.meng.example.redis.redisson;
 
 import org.redisson.Redisson;
 import org.redisson.api.RLock;

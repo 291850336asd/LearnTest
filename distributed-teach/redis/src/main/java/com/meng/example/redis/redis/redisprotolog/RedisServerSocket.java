@@ -1,4 +1,4 @@
-package com.meng.redis.redis.redisprotolog;
+package com.meng.example.redis.redis.redisprotolog;
 
 import java.io.IOException;
 import java.net.ServerSocket;

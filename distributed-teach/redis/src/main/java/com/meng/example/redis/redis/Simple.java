@@ -1,4 +1,4 @@
-package com.meng.redis.redis;
+package com.meng.example.redis.redis;
 
 public class Simple {
 
