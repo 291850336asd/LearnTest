@@ -15,7 +15,7 @@ public class Crc16Sharding {
     /**
      * 通过一个key可以定位到一块 节点
      * 自定义的简单算法
-     * @see JedisClusterCRC16
+     * @see JedisClusterCRC16#getSlot   slot算法
      * @param key
      * @return
      */
