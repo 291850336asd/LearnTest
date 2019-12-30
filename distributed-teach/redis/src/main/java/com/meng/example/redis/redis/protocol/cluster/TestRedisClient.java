@@ -18,7 +18,7 @@ public class TestRedisClient {
 
             RedisClient redisClient=crc16Sharding.crc16(key);
             redisClient.set(key,i+"");
-            System.out.println(redisClient.get(key));;
+            System.out.println(redisClient.get(key));
 
 
         }
