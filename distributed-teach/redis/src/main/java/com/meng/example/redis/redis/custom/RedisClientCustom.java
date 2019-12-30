@@ -1,4 +1,4 @@
-package com.meng.example.redis.redis;
+package com.meng.example.redis.redis.custom;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -60,6 +60,14 @@ public class RedisClientCustom {
     }
 
 
+    /**
+     * 符号解释：
+     * For Simple Strings the first byte of the reply is "+" 回复
+     * For Errors the first byte of the reply is "-" 错误
+     * For Integers the first byte of the reply is ":" 整数
+     * For Bulk Strings the first byte of the reply is "$" 字符串
+     * For Arrays the first byte of the reply is "*" 数组
+     */
     private static class ProtocolRedis{
         private static final String DOLLOR = "$";
         private static final String ASTERISK = "*";

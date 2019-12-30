@@ -1,4 +1,4 @@
-package com.meng.example.redis.redis;
+package com.meng.example.redis.redis.lock;
 
 import redis.clients.jedis.Jedis;
 
