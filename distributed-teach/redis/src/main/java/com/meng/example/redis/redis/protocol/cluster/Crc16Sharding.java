@@ -1,6 +1,8 @@
 package com.meng.example.redis.redis.protocol.cluster;
 
 
+import redis.clients.util.JedisClusterCRC16;
+
 import java.util.List;
 
 public class Crc16Sharding {
@@ -13,6 +15,7 @@ public class Crc16Sharding {
     /**
      * 通过一个key可以定位到一块 节点
      * 自定义的简单算法
+     * @see JedisClusterCRC16
      * @param key
      * @return
      */
