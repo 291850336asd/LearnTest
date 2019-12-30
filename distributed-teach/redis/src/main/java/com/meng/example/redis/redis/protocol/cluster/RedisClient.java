@@ -1,4 +1,4 @@
-package com.meng.example.redis.redis.custom.cluster;
+package com.meng.example.redis.redis.protocol.cluster;
 
 import java.io.IOException;
 import java.io.InputStream;
