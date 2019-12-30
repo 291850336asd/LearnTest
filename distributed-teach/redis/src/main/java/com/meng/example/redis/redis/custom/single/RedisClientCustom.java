@@ -1,4 +1,4 @@
-package com.meng.example.redis.redis.custom;
+package com.meng.example.redis.redis.custom.single;
 
 import java.io.IOException;
 import java.io.InputStream;
