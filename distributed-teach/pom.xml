@@ -19,6 +19,7 @@
         <module>zookeepeer-easy-admin</module>
         <module>dubbo-easy-demo</module>
         <module>redis</module>
+        <module>redis-cluster-monitor</module>
     </modules>
     <dependencies>
         <dependency>
