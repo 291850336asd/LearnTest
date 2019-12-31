@@ -1,5 +1,9 @@
 package com.meng.example;
 
+import com.google.common.collect.Maps;
+
+import java.util.Map;
+
 public class Constants {
 
     /**
@@ -12,4 +16,24 @@ public class Constants {
     public static final int DEFAULT_CLUSTER_TIMEOUT = 2000;
 
     public static final int DEFAULT_CLUSTER_MAX_REDIRECTIONS = 5000;
+
+    public static final String DEFAULT_CHARSET = "UTF-8";
+
+    /**
+     * 监控指标本地存储
+     */
+    public static final Map<String,Integer> MONITOR_MAP = Maps.newConcurrentMap();
+    // 使用次数
+    public static final String MONITOR_JEDIS_USED_NUM_NAME = "USED_NUM";
+    // 使用时长(ms)
+    public static final String MONITOR_JEDIS_USED_TIME_NAME = "USED_TIME";
+    // 监控数据抽取时间(s)
+    public static final int MONITOR_INTERVAL_SECONDS = 60;
+    public static final String MONITOR_PUSH_TYPE_NAME = "PUSH_TYPE";
+    public static final String MONITOR_PROTOCOL_NAME = "PROTOCOL";
+    public static final String MONITOR_HOST_NAME = "HOST";
+    public static final String MONITOR_PORT_NAME = "PORT";
+    public static final String MONITOR_SERVLET_AUTO_CLEAR_TIME_NAME  = "AUTO_CLEAR_TIME";
+    public static final String MONITOR_SERVLET_HAND_CLEAR_NAME  = "HAND_CLEAR";
+    public static final String MONITOR_SERVLET_SCHEDULED_SERVLET_NAME  = "SCHEDULED_SERVLET";
 }
