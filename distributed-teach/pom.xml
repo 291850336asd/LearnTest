@@ -20,6 +20,7 @@
         <module>dubbo-easy-demo</module>
         <module>redis</module>
         <module>redis-cluster-monitor</module>
+        <module>netty-learn</module>
     </modules>
     <dependencies>
         <dependency>

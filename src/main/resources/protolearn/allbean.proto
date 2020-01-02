@@ -4,7 +4,7 @@ package com.meng.example.protobuf;
 
 option optimize_for = SPEED;
 
-option java_package = "com.meng.nettynio.nettyexample.protobuf";
+option java_package = "com.meng.example.nettynio.nettyexample.protobuf";
 option java_outer_classname = "AllInfoProto";
 
 message AllBeanMapper {

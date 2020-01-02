@@ -13,7 +13,7 @@
 // limitations under the License.
 syntax = "proto3";
 
-option java_package = "com.meng.nettynio.nettyproto.bean";
+option java_package = "com.meng.example.nettynio.nettyproto.bean";
 option java_outer_classname = "Student";
 option java_multiple_files = true;
 package com.meng.nettyproto.bean;

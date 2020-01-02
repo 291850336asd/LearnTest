@@ -29,7 +29,7 @@
                     <!--这部分可有可无,加上的话则直接生成可运行jar包-->
                     <archive>
                     <manifest>
-                    <mainClass>com.meng.nettynio.nettymillonwithdata.MyClient</mainClass>
+                    <mainClass>com.meng.example.nettynio.nettymillonwithdata.MyClient</mainClass>
                     </manifest>
                     </archive>
                     <descriptorRefs>
