@@ -10,17 +10,26 @@ public class JavaSerial {
 
     public static void main(String[] args) throws Exception{
         //序列化
-        byte[] result = serializeObject();
-        System.out.println(Arrays.toString(result));
+        long startTime = System.currentTimeMillis();
+        for(int i= 0;i<=100000; i++){
+            byte[] result = serializeObject();
+            if(i == 0){
+                System.out.println(Arrays.toString(result));
+            }
 
-        //反序列化
-        SubscribeReq req = deserializeObject(result);
-        System.out.println(req.getSubReqID());
-        System.out.println(req.getUserName());
-        System.out.println(req.getProductName());
-        System.out.println(req.getAddressList().get(0));
-        System.out.println(req.getAddressList().get(1));
-        System.out.println(req.getAddressList().get(2));
+            //反序列化
+            SubscribeReq req = deserializeObject(result);
+            if(i ==0){
+                System.out.println(req.getSubReqID());
+                System.out.println(req.getUserName());
+                System.out.println(req.getProductName());
+                System.out.println(req.getAddressList().get(0));
+                System.out.println(req.getAddressList().get(1));
+                System.out.println(req.getAddressList().get(2));
+            }
+        }
+        long endTime = System.currentTimeMillis();
+        System.out.println(endTime - startTime);
     }
 
     private static byte[] serializeObject() throws Exception{

@@ -10,17 +10,26 @@ import static com.meng.exapmle.serial.protobuf.pb.SubscribeReqProto.SubscribeReq
 public class ProtobufSerial {
 
     public static void main(String[] args) throws InvalidProtocolBufferException {
-        byte[] result = serializeObject();
-        System.out.println(Arrays.toString(result));
+        long startTime = System.currentTimeMillis();
+        for(int i= 0;i<=100000; i++) {
+            byte[] result = serializeObject();
+            if(i == 0){
+                System.out.println(Arrays.toString(result));
+            }
 
-        //反序列化
-        SubscribeReqProto.SubscribeReq req = deserializeObject(result);
-        System.out.println(req.getSubReqID());
-        System.out.println(req.getUserName());
-        System.out.println(req.getProductName());
-        System.out.println(req.getAddress(0));
-        System.out.println(req.getAddress(1));
-        System.out.println(req.getAddress(2));
+            //反序列化
+            SubscribeReqProto.SubscribeReq req = deserializeObject(result);
+            if(i ==0){
+                System.out.println(req.getSubReqID());
+                System.out.println(req.getUserName());
+                System.out.println(req.getProductName());
+                System.out.println(req.getAddress(0));
+                System.out.println(req.getAddress(1));
+                System.out.println(req.getAddress(2));
+            }
+        }
+        long endTime = System.currentTimeMillis();
+        System.out.println(endTime - startTime);
     }
 
     private static byte[] serializeObject(){
