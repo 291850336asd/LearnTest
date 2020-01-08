@@ -1,29 +1,57 @@
 package com.meng.example.snake;
 
+import com.meng.example.snake.gameengine.SnakeGameEngine;
+import com.meng.example.snake.listener.SnakeGameListener;
+import com.meng.example.snake.model.GameEvent;
+import com.meng.example.snake.model.GameStatistic;
+import com.meng.example.snake.model.VersionData;
+import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.EventLoopGroup;
 import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
+import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.util.concurrent.GlobalEventExecutor;
 
 /**
- * 贪吃蛇服务器端
+ * websocket 聊天室服务器
  */
 public class SnakeGameServer {
 
     private int port;
-    final SnakeGameEngine gameEngine;
     private ChannelGroup channels;
-    public SnakeGameServer(int port){
+    final SnakeGameEngine gameEngine;
+    public SnakeGameServer(int port) {
         this.port = port;
-        this.gameEngine = new SnakeGameEngine(60, 60, 500);
-        this.channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+        channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+        gameEngine = new SnakeGameEngine(200, 200, 200);
     }
 
-    public void run() throws Exception {
+    public void run() throws Exception{
         //启动游戏
-        gameEngine.start();
-
-        gameEngine.setListener();
+        startGame();
+        EventLoopGroup bossGroup = new NioEventLoopGroup(2);
+        EventLoopGroup workerGroup = new NioEventLoopGroup(3);
+        ServerBootstrap serverBootstrap = new ServerBootstrap();
     }
 
+
+    private void startGame(){
+        gameEngine.start();
+        gameEngine.setListener(new SnakeGameListener() {
+            @Override
+            public void versionChange(VersionData changeData, VersionData currentData) {
+            }
+
+            @Override
+            public void statusChange(GameStatistic statistic) {
+
+            }
+
+            @Override
+            public void noticeEvent(GameEvent[] events) {
+
+            }
+        });
+    }
 
 }
