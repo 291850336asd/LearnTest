@@ -177,8 +177,6 @@ public class SnakeGameEngine {
                     // TODO 需重构成 先进食后消化
                     snake.addLineToHead();
                     snake.active();
-                    //  增涨后恢复为普通状态
-                      snake.moveStep();
                     break;
                 case DYING:
                     snake.die();
