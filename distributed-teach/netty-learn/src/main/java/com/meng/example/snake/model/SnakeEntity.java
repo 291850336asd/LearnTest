@@ -42,7 +42,7 @@ public class SnakeEntity {
      * @param startPoint
      * @param initBodyCount
      */
-    public void resuregence(int startPoint, int initBodyCount){
+    public void resurgence(int startPoint, int initBodyCount){
         if(!isDie()) {
             throw new RuntimeException("未达到复活条件，角色必须是死亡状态");
         }

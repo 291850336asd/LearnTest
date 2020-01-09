@@ -28,4 +28,14 @@ public enum  SnakeDirection {
         }
     }
 
+    public int CodeValue(){
+        return this.code;
+    }
+
+
+    public static final int LEFTNUM = 37;
+    public static final int UPNUM = 38;
+    public static final int RIGHTNUM = 39;
+    public static final int DOWNNUM = 40;
+
 }

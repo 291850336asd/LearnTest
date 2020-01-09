@@ -232,9 +232,11 @@ public class SnakeGameEngine {
                 historyVersionData.removeLast();
             }
             VersionData changData = encodeVersion(newVersion, changeNodes);
-            historyVersionData.add(changData);
+            historyVersionData.addFirst(changData);
             //变更版本号
             currentVersion = newVersion;
+            //刷新整个地图
+            getCurrentMapData(true);
             // 通知版本变更
             if(listener != null){
                 try {
@@ -245,6 +247,21 @@ public class SnakeGameEngine {
             }
         }
     }
+
+    //获取蛇头 位置
+    public DrawingCommand getDrawingCommand(String accountId){
+        DrawingCommand cmd = null;
+        if (!snakes.containsKey(accountId)) {
+            return cmd;
+        }
+        SnakeEntity snake = snakes.get(accountId);
+        Integer[] head = snake.getHead();
+        if (head != null){
+            cmd = new DrawingCommand("Lime", head[1] + "," + head[0]);
+        }
+        return cmd;
+    }
+
 
     /**
      * 蛇被击杀
@@ -330,6 +347,68 @@ public class SnakeGameEngine {
 
     }
 
+    public List<VersionData> getVersion(Long[] versionId){
+        List<VersionData> list = new ArrayList<>();
+        VersionData[] historys = historyVersionData.toArray(new VersionData[list.size()]);
+        for (VersionData historyVersion : historys) {
+            for (long v : versionId) {
+                if (historyVersion.getVersion() == v) {
+                    list.add(historyVersion);
+                }
+            }
+        }
+        return list;
+    }
+
+    public VersionData getCurrentMapData(boolean check){
+        if(currentMapData == null){
+            currentMapData = encodeCurrentMapData();
+        } else if(check && currentMapData.getVersion() < currentVersion){
+            currentMapData = encodeCurrentMapData();
+        }
+        return currentMapData;
+    }
+
+    /**
+     * 构建当前地图所有的像素
+     * @return
+     */
+    private VersionData encodeCurrentMapData(){
+        StringBuilder body = new StringBuilder();
+        StringBuilder food = new StringBuilder();
+        Mark mark;
+        int x,y;
+        for(int i=0; i<  mapsMarks.length; i++){
+            mark = mapsMarks[i];
+            x = i % mapWidth;
+            y = i / mapWidth;
+            if(mark != null && mark.snakeNodes > 0){
+                body.append("," + x + "," + y);
+            } else if (mark != null && mark.foodNode > 0) {
+                food.append("," + x + "," + y);
+            }
+        }
+        List<String> cmds = new ArrayList();
+        List<String> cmdsDatas = new ArrayList();
+        // 去掉前缀 中的逗号
+        if (body.length() > 0) {
+            body.deleteCharAt(0);
+            cmds.add("Green");
+            cmdsDatas.add(body.toString());
+        }
+        if (food.length() > 0) {
+            food.deleteCharAt(0);
+            cmds.add("Yellow");
+            cmdsDatas.add(food.toString());
+        }
+        VersionData vd = new VersionData(currentVersion, System.currentTimeMillis());
+        vd.setCmds(cmds.toArray(new String[cmds.size()]));
+        vd.setCmdDatas(cmdsDatas.toArray(new String[cmdsDatas.size()]));
+        vd.setFull(true);
+        return vd;
+    }
+
+
 
     /**
      * 根据 节点获取蛇
@@ -347,6 +426,80 @@ public class SnakeGameEngine {
             }
         }
         return result;
+    }
+
+
+
+    //TODO bug 出生点 可能已经被占用
+    public SnakeEntity newSnake(String accountId, String accountName) {
+        int max = Math.min(mapHeight, mapWidth) - 10;
+        int min = 10;
+        Random random = new Random();
+        //随机生成 出生点
+        int startPoint = random.nextInt(max - min + 1) + min;
+        SnakeEntity node = new SnakeEntity(this, accountId, startPoint, 3, SnakeDirection.RIGHT);
+        String gameName = accountName;
+        // 防重名机制,补充accountId为后缀
+        for (SnakeEntity snakeEntity : snakes.values()) {
+            if(accountName.equals(snakeEntity.getGameName())){
+                gameName=gameName+"_"+accountId;
+                break;
+            }
+        }
+        node.setGameName(gameName);
+        snakes.put(node.getAccountId(), node);
+        this.logger.info("新增Snake ID:{} 出生点位:{} 初始节点:{}", accountId, startPoint, 3);
+        return node;
+    }
+
+    //TODO BUG 复活点位 可能已经被占用
+    public void doResurgence(String accountId){
+        if(!snakes.containsKey(accountId)){
+            this.logger.warn("角色复活失败，找不到指定帐户 ID:{}", accountId);
+            return ;
+        }
+        if (!snakes.get(accountId).isDie()) {
+            this.logger.warn("角色复活失败，必须为死亡状态 ID:{}", accountId);
+            return;
+        }
+        int max = Math.min(mapWidth, mapHeight) - 10;
+        int min = 10;
+        Random random = new Random();
+        // 随机生成 出生点位
+        int startPoint = random.nextInt(max - min + 1) + min;
+        snakes.get(accountId).resurgence(startPoint,3);
+        this.logger.info("角色复活 ID:{} 出生点位:{} 初始节点:{}", accountId, startPoint, 3);
+    }
+
+
+    /**
+     * 改变蛇的方向
+     * @param accountId
+     * @param controlCode
+     */
+    public void controlSnake(String accountId, int controlCode){
+        if(!snakes.containsKey(accountId)){
+            return;
+        }
+        SnakeEntity snake = snakes.get(accountId);
+        if(snake.isDie()){
+            return;
+        }
+        switch (controlCode){
+            case SnakeDirection.LEFTNUM:
+                snake.setDirection(SnakeDirection.LEFT);
+                break;
+            case SnakeDirection.UPNUM:
+                snake.setDirection(SnakeDirection.UP);
+                break;
+            case SnakeDirection.RIGHTNUM:
+                snake.setDirection(SnakeDirection.RIGHT);
+                break;
+            case SnakeDirection.DOWNNUM:
+                snake.setDirection(SnakeDirection.DOWN);
+                break;
+        }
+        logger.debug("指令控制 ID:{},指令:{}", accountId, controlCode);
     }
 
 
@@ -420,4 +573,26 @@ public class SnakeGameEngine {
         this.listener = listener;
     }
 
+    public IntegralInfo getIntegralInfoByAccountId(String accountId) {
+        if (!snakes.containsKey(accountId)) {
+            logger.warn("找不到指定帐户");
+            return null;
+        }
+        SnakeEntity snake = snakes.get(accountId);
+        IntegralInfo info = new IntegralInfo();
+        info.setLastVersion(currentVersion);
+        info.setGameName(snake.getGameName());
+        info.setAccountId(snake.getAccountId());
+        info.setDieIntegral(snake.getDieIntegral());
+        info.setKillIntegral(snake.getKillIntegral());
+        return info;
+    }
+
+    public SnakeEntity getSnakeByAccountId(String accountId) {
+        if (!snakes.containsKey(accountId)) {
+            logger.warn("找不到指定帐户");
+            return null;
+        }
+        return snakes.get(accountId);
+    }
 }
