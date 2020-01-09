@@ -178,7 +178,7 @@ public class SnakeGameEngine {
                     snake.addLineToHead();
                     snake.active();
                     //  增涨后恢复为普通状态
-                    //  snake.moveStep();
+                      snake.moveStep();
                     break;
                 case DYING:
                     snake.die();
@@ -205,7 +205,7 @@ public class SnakeGameEngine {
             }
             for(Integer[] node : snake.getAddNodes()){
                 //判断是否撞击了蛇身
-                if(getMark(node).snakeNodes > 0){
+                if(getMark(node).snakeNodes > 1){
                     //触发死亡规则
                     snake.dying();
                     //触发击杀规则

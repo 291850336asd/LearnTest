@@ -34,7 +34,7 @@ public class SnakeGameServer {
     public SnakeGameServer(int port) {
         this.port = port;
         channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
-        gameEngine = new SnakeGameEngine(200, 200, 200);
+        gameEngine = new SnakeGameEngine(200, 200, 60);
     }
 
     public void run() throws Exception{
@@ -150,6 +150,17 @@ public class SnakeGameServer {
             }
         }
 
+    }
+
+
+    public static void main(String[] args) throws Exception{
+        int port;
+        if (args.length > 0) {
+            port = Integer.parseInt(args[0]);
+        } else {
+            port = 8080;
+        }
+        new SnakeGameServer(port).run();
     }
 
 }
