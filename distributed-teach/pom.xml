@@ -21,6 +21,7 @@
         <module>redis</module>
         <module>redis-cluster-monitor</module>
         <module>netty-learn</module>
+        <module>rocketmq</module>
     </modules>
     <dependencies>
         <dependency>
