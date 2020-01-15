@@ -22,6 +22,7 @@
         <module>redis-cluster-monitor</module>
         <module>netty-learn</module>
         <module>rocketmq</module>
+        <module>sharding-jdbc</module>
     </modules>
     <dependencies>
         <dependency>

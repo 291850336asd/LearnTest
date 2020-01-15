@@ -16,7 +16,7 @@ mybatis 体系结构
 logging 体系结构  
 nginx基本使用  
 tomcat 自动发布脚本  
-项目持续集成发布管理  
+jenkins项目持续集成发布管理  
 JVM基础 堆栈分析  
 区域链入门 挖矿 密码学基础  
 zookeeper  
