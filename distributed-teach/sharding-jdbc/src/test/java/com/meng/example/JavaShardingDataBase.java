@@ -58,9 +58,10 @@ public class JavaShardingDataBase {
         // 配置分表策略 对表分片是采用我们order_id
         shardingRuleConfig.setDefaultTableShardingStrategyConfig(new StandardShardingStrategyConfiguration("order_id", PreciseModuloTableShardingAlgorithm.class.getName()));
 
-
+        Properties properties= new  Properties();
+        properties.setProperty("sql.show","true");
         // 获取数据源对象
-        DataSource dataSource = ShardingDataSourceFactory.createDataSource(dataSourceMap, shardingRuleConfig, new ConcurrentHashMap(), new Properties());
+        DataSource dataSource = ShardingDataSourceFactory.createDataSource(dataSourceMap, shardingRuleConfig, new ConcurrentHashMap(), properties);
 
         JavaShardingDataBase test = new JavaShardingDataBase();
 //

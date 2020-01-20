@@ -4,6 +4,7 @@ import com.meng.example.entity.Order;
 import com.meng.example.entity.OrderItem;
 import com.meng.example.repository.OrderItemRepository;
 import com.meng.example.repository.OrderRepository;
+import io.shardingjdbc.core.api.HintManager;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -50,7 +51,9 @@ public class DemoService {
             orderItemRepository.delete(each);
         }*/
       //  System.out.println("2.Delete--------------");
+     //   HintManager hintManager = HintManager.getInstance();
         System.out.println(orderItemRepository.selectAll());
+     //   hintManager.close();
       /*  orderItemRepository.dropTable();
         orderRepository.dropTable();*/
     }
