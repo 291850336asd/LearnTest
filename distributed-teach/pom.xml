@@ -23,6 +23,7 @@
         <module>netty-learn</module>
         <module>rocketmq</module>
         <module>sharding-jdbc</module>
+        <module>spring-cloud</module>
     </modules>
     <dependencies>
         <dependency>
