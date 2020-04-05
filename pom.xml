@@ -13,6 +13,7 @@
         <module>blockchain</module>
         <module>distributed-teach</module>
         <module>springboot-autoconfig-start</module>
+        <module>data-structure-algorithm</module>
     </modules>
     <packaging>pom</packaging>
     <build>
