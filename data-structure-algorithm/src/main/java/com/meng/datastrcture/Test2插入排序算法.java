@@ -1,10 +1,12 @@
 package com.meng.datastrcture;
 
+import org.slf4j.Logger;
+
 /**
  * 插入算法
  */
-public class Test2插入算法 {
-
+public class Test2插入排序算法 {
+	private static final Logger log = org.slf4j.LoggerFactory.getLogger(Test2插入排序算法.class);
 	public static void main(String[] args) {
 
 		int[] ints = {7,3,3,8,2,1,9,4,5};
