@@ -1,8 +1,8 @@
 package com.meng.datastrcture;
 
-public class Node {
+public class LinkNode {
 
-	public Node(Object value)
+	public LinkNode(Object value)
 	{
 		this.value=value;
 	}
@@ -14,11 +14,11 @@ public class Node {
 	public void setValue(Object value) {
 		this.value = value;
 	}
-	public Node getNext() {
+	public LinkNode getNext() {
 		return next;
 	}
-	public void setNext(Node next) {
+	public void setNext(LinkNode next) {
 		this.next = next;
 	}
-	Node next; //下一个节点的地址(对象引用)
+	LinkNode next; //下一个节点的地址(对象引用)
 }

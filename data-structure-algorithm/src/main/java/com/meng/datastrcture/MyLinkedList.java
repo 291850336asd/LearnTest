@@ -3,7 +3,7 @@ package com.meng.datastrcture;
 public class MyLinkedList {
 
 	int size=0;
-	Node head=null;
+	LinkNode head=null;
 
 	public int size()
 	{
@@ -12,14 +12,14 @@ public class MyLinkedList {
 
 	public void add(Object value)
 	{
-		Node newNode = new Node(value);
+		LinkNode newNode = new LinkNode(value);
 		if(head==null)//第一次添加
 		{
 			head = newNode;
 		}
 		else
 		{
-			Node temp = head;//当前节点
+			LinkNode temp = head;//当前节点
 			while(temp.getNext()!=null)
 			{
 				temp = temp.getNext();//当前节点向后移动
@@ -32,7 +32,7 @@ public class MyLinkedList {
 
 	public void set(int index,Object value)
 	{
-		Node temp = head;
+		LinkNode temp = head;
 		for(int i=0;i<index;i++)
 		{
 			temp=temp.getNext();
@@ -43,7 +43,7 @@ public class MyLinkedList {
 
 	public Object get(int index)
 	{
-		Node temp = head;
+		LinkNode temp = head;
 		for(int i=0;i<index;i++)
 		{
 			temp=temp.getNext();
@@ -67,7 +67,7 @@ public class MyLinkedList {
 		else
 		{
 			//找到删除元素的前一个元素
-			Node temp = head;
+			LinkNode temp = head;
 			for(int i=0;i<index-1;i++)
 			{
 				temp=temp.getNext();
