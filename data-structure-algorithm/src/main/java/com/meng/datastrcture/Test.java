@@ -7,12 +7,10 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Test {
     public static void main(String[] args) {
-
-        System.out.println((Math.abs("E304000000040593167".hashCode())&7) + 1);
-
 //        System.out.println(LocalDateTime.of(LocalDate.now().minusDays(1), LocalTime.MIN));
 //        System.out.println(LocalDateTime.parse("2020-04-24 01:00:01", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 //
@@ -21,5 +19,8 @@ public class Test {
 
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("12", "12");
+
+        ConcurrentHashMap<String, String> concurrentHashMap = new ConcurrentHashMap<>();
+        concurrentHashMap.put("1", "2");
     }
 }

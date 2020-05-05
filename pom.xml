@@ -14,6 +14,7 @@
         <module>distributed-teach</module>
         <module>springboot-autoconfig-start</module>
         <module>data-structure-algorithm</module>
+        <module>learn-code</module>
     </modules>
     <packaging>pom</packaging>
     <build>
