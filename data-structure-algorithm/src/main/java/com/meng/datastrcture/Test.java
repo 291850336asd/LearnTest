@@ -17,10 +17,14 @@ public class Test {
 //        System.out.println(Integer.toBinaryString(~5));
 //        System.out.println(Integer.MAX_VALUE - Integer.parseInt("1111111111111111111111111111010", 2));
 
+
+        System.out.println((1 ^ (1 >>> 16)) & 0x7fffffff);
+        System.out.println((-1 ^ (-1 >>> 16)) & 0x7fffffff);
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("12", "12");
 
         ConcurrentHashMap<String, String> concurrentHashMap = new ConcurrentHashMap<>();
         concurrentHashMap.put("1", "2");
+        concurrentHashMap.size();
     }
 }
