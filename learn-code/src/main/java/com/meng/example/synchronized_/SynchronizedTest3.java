@@ -11,6 +11,8 @@ import org.openjdk.jol.info.ClassLayout;
  * new对象-偏向锁-轻量级锁（无所，自旋锁，自适应自旋）-重量级锁
  * synchronized优化的过程和markword息息相关
  *
+ *
+ * lock cpmxchg 汇编指令
  */
 public class SynchronizedTest3 {
 
