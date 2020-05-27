@@ -9,18 +9,21 @@ public class App
     public static void main( String[] args )
     {
 
-        System.out.println(Math.abs("E004000000224495101".hashCode())%8 + 1);
-        System.out.println( "Hello World!" );
+        System.out.println(getStr());
+    }
 
-        int i=2;
-        i = i++;
-        System.out.println(i);//2
-        int j = i;
-        System.out.println(j);
-
-//        int i=2;
-//        int j = i++;
-//        System.out.println(i);
-//        System.out.println(j);
+    public static String getStr(){
+        String str = null;
+        try{
+            str ="hello";
+            int i = 1/0;
+            return str;
+        }catch (Exception e){
+        }
+        finally {
+            System.out.println("----");
+            str = "name";
+        }
+        return str;
     }
 }
